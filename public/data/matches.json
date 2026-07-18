@@ -7544,10 +7544,10 @@
    "date": "2026-07-18T21:00:00Z",
    "venueId": "400257525",
    "status": "live",
-   "time": null,
+   "time": "49'",
    "home": {
     "code": "FRA",
-    "score": 0,
+    "score": 1,
     "pen": null
    },
    "away": {
