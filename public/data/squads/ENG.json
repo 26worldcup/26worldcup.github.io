@@ -36,7 +36,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Crystal_Palace_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Dean_Henderson",
-   "wcApps": 0,
+   "wcApps": 1,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
@@ -72,7 +72,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Aston_Villa_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Ezri_Konsa",
-   "wcApps": 7,
+   "wcApps": 8,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
@@ -126,7 +126,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Manchester_City_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Marc_Gu%C3%A9hi",
-   "wcApps": 7,
+   "wcApps": 8,
    "wcGoals": 0,
    "wcYellow": 1,
    "wcRed": 0
@@ -198,7 +198,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Djed_Spence",
-   "wcApps": 7,
+   "wcApps": 8,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
@@ -216,7 +216,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Bayer_04_Leverkusen",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Jarell_Quansah",
-   "wcApps": 2,
+   "wcApps": 3,
    "wcGoals": 0,
    "wcYellow": 1,
    "wcRed": 1
@@ -234,7 +234,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Arsenal_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Declan_Rice",
-   "wcApps": 6,
+   "wcApps": 7,
    "wcGoals": 0,
    "wcYellow": 2,
    "wcRed": 0
@@ -324,7 +324,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Aston_Villa_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Morgan_Rogers",
-   "wcApps": 6,
+   "wcApps": 7,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
@@ -342,7 +342,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Arsenal_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Eberechi_Eze",
-   "wcApps": 4,
+   "wcApps": 5,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
@@ -360,7 +360,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Arsenal_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Bukayo_Saka",
-   "wcApps": 6,
+   "wcApps": 7,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
@@ -396,7 +396,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/FC_Barcelona",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Marcus_Rashford",
-   "wcApps": 5,
+   "wcApps": 6,
    "wcGoals": 1,
    "wcYellow": 0,
    "wcRed": 0
@@ -468,7 +468,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Al-Ahli_Saudi_FC",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Ivan_Toney",
-   "wcApps": 1,
+   "wcApps": 2,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
