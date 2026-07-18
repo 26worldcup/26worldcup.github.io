@@ -71126,12 +71126,19 @@
      "type": 2,
      "period": 3,
      "sec": 1073
+    },
+    {
+     "player": "448196",
+     "minute": "37'",
+     "type": 2,
+     "period": 3,
+     "sec": 2172
     }
    ],
    "bookings": [],
    "substitutions": []
   },
-  "matchTime": "30'",
+  "matchTime": "44'",
   "period": 3,
   "final": false,
   "secTried": true,
