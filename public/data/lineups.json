@@ -71133,13 +71133,20 @@
      "type": 2,
      "period": 3,
      "sec": 2172
+    },
+    {
+     "player": "448196",
+     "minute": "45'+1'",
+     "type": 2,
+     "period": 3,
+     "sec": 2753
     }
    ],
    "bookings": [],
    "substitutions": []
   },
-  "matchTime": "44'",
-  "period": 3,
+  "matchTime": null,
+  "period": 4,
   "final": false,
   "secTried": true,
   "v": 2

@@ -257,6 +257,14 @@
    "ownGoals": 0
   },
   {
+   "id": "448196",
+   "name": "Bukayo SAKA",
+   "code": "ENG",
+   "no": 7,
+   "goals": 2,
+   "ownGoals": 0
+  },
+  {
    "id": "489518",
    "name": "Crysencio SUMMERVILLE",
    "code": "NED",
@@ -309,14 +317,6 @@
    "name": "Enzo FERNANDEZ",
    "code": "ARG",
    "no": 24,
-   "goals": 2,
-   "ownGoals": 0
-  },
-  {
-   "id": "522846",
-   "name": "Ermin MAHMIC",
-   "code": "BIH",
-   "no": 26,
    "goals": 2,
    "ownGoals": 0
   }
