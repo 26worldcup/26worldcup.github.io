@@ -144,7 +144,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Chelsea_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Trevoh_Chalobah",
-   "wcApps": 0,
+   "wcApps": 1,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
@@ -271,7 +271,7 @@
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Jude_Bellingham",
    "wcApps": 8,
-   "wcGoals": 6,
+   "wcGoals": 7,
    "wcYellow": 1,
    "wcRed": 0
   },
