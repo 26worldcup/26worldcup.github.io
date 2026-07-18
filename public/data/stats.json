@@ -97,6 +97,14 @@
    "ownGoals": 0
   },
   {
+   "id": "448196",
+   "name": "Bukayo SAKA",
+   "code": "ENG",
+   "no": 7,
+   "goals": 3,
+   "ownGoals": 0
+  },
+  {
    "id": "448362",
    "name": "Charles DE KETELAERE",
    "code": "BEL",
@@ -252,14 +260,6 @@
    "id": "393480",
    "name": "Breel EMBOLO",
    "code": "SUI",
-   "no": 7,
-   "goals": 2,
-   "ownGoals": 0
-  },
-  {
-   "id": "448196",
-   "name": "Bukayo SAKA",
-   "code": "ENG",
    "no": 7,
    "goals": 2,
    "ownGoals": 0

@@ -7544,7 +7544,7 @@
    "date": "2026-07-18T21:00:00Z",
    "venueId": "400257525",
    "status": "live",
-   "time": "76'",
+   "time": "90'",
    "home": {
     "code": "FRA",
     "score": 3,
@@ -7552,7 +7552,7 @@
    },
    "away": {
     "code": "ENG",
-    "score": 4,
+    "score": 5,
     "pen": null
    },
    "phA": "RU101",

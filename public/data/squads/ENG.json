@@ -180,7 +180,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Chelsea_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Reece_James",
-   "wcApps": 4,
+   "wcApps": 5,
    "wcGoals": 0,
    "wcYellow": 0,
    "wcRed": 0
@@ -252,7 +252,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Nottingham_Forest_F.C.",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Elliot_Anderson_(footballer)",
-   "wcApps": 7,
+   "wcApps": 8,
    "wcGoals": 0,
    "wcYellow": 1,
    "wcRed": 0
@@ -270,7 +270,7 @@
    "clubWiki": "https://en.wikipedia.org/wiki/Real_Madrid_CF",
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Jude_Bellingham",
-   "wcApps": 7,
+   "wcApps": 8,
    "wcGoals": 6,
    "wcYellow": 1,
    "wcRed": 0
@@ -361,7 +361,7 @@
    "captain": false,
    "wiki": "https://en.wikipedia.org/wiki/Bukayo_Saka",
    "wcApps": 7,
-   "wcGoals": 2,
+   "wcGoals": 3,
    "wcYellow": 0,
    "wcRed": 0
   },
