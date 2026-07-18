@@ -81,6 +81,14 @@
    "ownGoals": 0
   },
   {
+   "id": "484860",
+   "name": "Bradley BARCOLA",
+   "code": "FRA",
+   "no": 12,
+   "goals": 3,
+   "ownGoals": 0
+  },
+  {
    "id": "424051",
    "name": "Brian BROBBEY",
    "code": "NED",
@@ -237,14 +245,6 @@
    "name": "Azzedine OUNAHI",
    "code": "MAR",
    "no": 8,
-   "goals": 2,
-   "ownGoals": 0
-  },
-  {
-   "id": "484860",
-   "name": "Bradley BARCOLA",
-   "code": "FRA",
-   "no": 12,
    "goals": 2,
    "ownGoals": 0
   },
