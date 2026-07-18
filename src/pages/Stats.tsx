@@ -75,7 +75,7 @@ export default function Stats() {
   const liveCount = live.length
   const goals = finished.reduce((sum, m) => sum + (m.home?.score ?? 0) + (m.away?.score ?? 0), 0)
   // average goals per finished match, 1 decimal, Latin digits in every locale
-  const goalsAvg = finished.length > 0 ? (goals / finished.length).toFixed(1) : null
+  const goalsAvg = finished.length > 0 ? (goals / finished.length).toFixed(2) : null
 
   // top scorers with tie-aware ranks
   const scorers = stats.scorers.slice().sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
