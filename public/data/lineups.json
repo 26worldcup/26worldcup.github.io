@@ -71119,12 +71119,19 @@
      "type": 2,
      "period": 3,
      "sec": 135
+    },
+    {
+     "player": "403049",
+     "minute": "18'",
+     "type": 2,
+     "period": 3,
+     "sec": 1073
     }
    ],
    "bookings": [],
    "substitutions": []
   },
-  "matchTime": "17'",
+  "matchTime": "30'",
   "period": 3,
   "final": false,
   "secTried": true,
