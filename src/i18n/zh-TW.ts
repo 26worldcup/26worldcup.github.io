@@ -161,6 +161,8 @@ const zhTW: Dict = {
   probEt: '延長賽獲勝',
   probPens: 'PK戰獲勝',
   probNote: '基於歷史戰績的模型估算,僅供參考。',
+  assistsShow: '顯示助攻',
+  assistsHide: '隱藏助攻',
   probShow: '顯示賽前勝負機率',
   probHide: '隱藏勝負機率',
   // ---- tournament forecast ----

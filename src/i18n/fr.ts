@@ -165,6 +165,8 @@ const fr: Dict = {
   probEt: 'Victoire en prolongation',
   probPens: 'Victoire aux tirs au but',
   probNote: 'Estimation statistique à partir des résultats historiques, à titre indicatif.',
+  assistsShow: 'Afficher les passes déc.',
+  assistsHide: 'Masquer les passes déc.',
   probShow: 'Afficher les probabilités d’avant-match',
   probHide: 'Masquer les probabilités',
   // ---- tournament forecast ----

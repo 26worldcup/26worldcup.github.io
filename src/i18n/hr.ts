@@ -165,6 +165,8 @@ const hr: Dict = {
   probEt: 'Pobjeda u produžecima',
   probPens: 'Pobjeda na jedanaesterce',
   probNote: 'Procjena modela na temelju povijesnih rezultata, samo informativno.',
+  assistsShow: 'Prikaži asistencije',
+  assistsHide: 'Sakrij asistencije',
   probShow: 'Prikaži vjerojatnosti prije utakmice',
   probHide: 'Sakrij vjerojatnosti',
   // ---- tournament forecast ----

@@ -162,6 +162,8 @@ const tr: Dict = {
   probEt: 'Uzatmalarda galibiyet',
   probPens: 'Penaltılarda galibiyet',
   probNote: 'Geçmiş sonuçlara dayalı model tahmini, yalnızca fikir verir.',
+  assistsShow: 'Asistleri göster',
+  assistsHide: 'Asistleri gizle',
   probShow: 'Maç öncesi kazanma olasılığını göster',
   probHide: 'Olasılığı gizle',
   // ---- tournament forecast ----

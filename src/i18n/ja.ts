@@ -162,6 +162,8 @@ const ja: Dict = {
   probEt: '延長での勝利',
   probPens: 'PK戦での勝利',
   probNote: '過去の対戦結果に基づくモデル推定値です。参考程度にどうぞ。',
+  assistsShow: 'アシストを表示',
+  assistsHide: 'アシストを隠す',
   probShow: '試合前の勝利確率を表示',
   probHide: '勝利確率を隠す',
   // ---- tournament forecast ----

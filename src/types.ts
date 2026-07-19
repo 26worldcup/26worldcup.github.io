@@ -163,6 +163,8 @@ export interface TeamLineup {
     type: number | null
     period: number | null
   }[]
+  /** FIFA timeline assists, credited to this side's players (never own goals or penalties) */
+  assists?: { player: string; minute: string | null; period: number | null }[]
   bookings: {
     /** null when the card went to a coach/team official rather than a player */
     player: string | null

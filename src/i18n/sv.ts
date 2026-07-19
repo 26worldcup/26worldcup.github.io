@@ -164,6 +164,8 @@ const sv: Dict = {
   probEt: 'Seger i förlängning',
   probPens: 'Seger på straffar',
   probNote: 'Modellskattning från historiska resultat, endast för nöjes skull.',
+  assistsShow: 'Visa assist',
+  assistsHide: 'Dölj assist',
   probShow: 'Visa vinstchanser före matchen',
   probHide: 'Dölj vinstchanser',
   // ---- tournament forecast ----

@@ -165,6 +165,8 @@ const nl: Dict = {
   probEt: 'Winst in verlenging',
   probPens: 'Winst na strafschoppen',
   probNote: 'Modelschatting op basis van historische uitslagen, puur indicatief.',
+  assistsShow: 'Assists tonen',
+  assistsHide: 'Assists verbergen',
   probShow: 'Winkans van vóór de wedstrijd tonen',
   probHide: 'Winkans verbergen',
   // ---- tournament forecast ----

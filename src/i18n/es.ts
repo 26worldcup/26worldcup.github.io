@@ -165,6 +165,8 @@ const es: Dict = {
   probEt: 'Victoria en la prórroga',
   probPens: 'Victoria en penales',
   probNote: 'Estimación del modelo según resultados históricos, solo orientativa.',
+  assistsShow: 'Ver las asistencias',
+  assistsHide: 'Ocultar las asistencias',
   probShow: 'Ver la probabilidad previa al partido',
   probHide: 'Ocultar la probabilidad',
   // ---- tournament forecast ----

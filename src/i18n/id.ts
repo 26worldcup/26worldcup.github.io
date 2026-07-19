@@ -162,6 +162,8 @@ const id: Dict = {
   probEt: 'Menang di babak tambahan',
   probPens: 'Menang lewat adu penalti',
   probNote: 'Perkiraan model dari hasil historis, sekadar hiburan.',
+  assistsShow: 'Tampilkan assist',
+  assistsHide: 'Sembunyikan assist',
   probShow: 'Tampilkan peluang sebelum pertandingan',
   probHide: 'Sembunyikan peluang',
   // ---- tournament forecast ----

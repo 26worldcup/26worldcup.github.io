@@ -166,6 +166,8 @@ const en: Dict = {
   probEt: 'Win in extra time',
   probPens: 'Win on penalties',
   probNote: 'Model estimate from historical results, for fun only.',
+  assistsShow: 'Show assists',
+  assistsHide: 'Hide assists',
   probShow: 'Show pre-match win probability',
   probHide: 'Hide win probability',
   // ---- tournament forecast ----

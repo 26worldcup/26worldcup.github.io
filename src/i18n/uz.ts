@@ -163,6 +163,8 @@ const uz: Dict = {
   probEt: "Qo'shimcha vaqtda g'alaba",
   probPens: "Penaltilarda g'alaba",
   probNote: "Tarixiy natijalarga asoslangan model bahosi, shunchaki ma'lumot uchun.",
+  assistsShow: "Assistlarni ko'rsatish",
+  assistsHide: 'Assistlarni yashirish',
   probShow: "O'yin oldidagi ehtimollarni ko'rsatish",
   probHide: 'Ehtimollarni yashirish',
   // ---- tournament forecast ----

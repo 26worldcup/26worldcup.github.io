@@ -457,6 +457,12 @@ a.md-plink:hover {
   border-color: var(--accent-2);
 }
 
+/* assists sit behind the same reveal pill, directly under the goals they set up, so
+   the gap above it is tighter than the one that separates the probability block */
+.md-assist-toggle {
+  margin-top: 8px;
+}
+
 /* knockout path-to-victory breakdown */
 .md-prob-path {
   margin: 10px auto 0;

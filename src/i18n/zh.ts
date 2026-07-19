@@ -161,6 +161,8 @@ const zh: Dict = {
   probEt: '加时赛获胜',
   probPens: '点球大战获胜',
   probNote: '基于历史战绩的模型估算，仅供参考。',
+  assistsShow: '显示助攻',
+  assistsHide: '隐藏助攻',
   probShow: '显示赛前胜负概率',
   probHide: '隐藏胜负概率',
   // ---- tournament forecast ----

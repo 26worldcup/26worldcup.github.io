@@ -162,6 +162,8 @@ const ko: Dict = {
   probEt: '연장전 승리',
   probPens: '승부차기 승리',
   probNote: '과거 경기 결과 기반 모델 추정치로, 재미로만 참고하세요.',
+  assistsShow: '도움 보기',
+  assistsHide: '도움 숨기기',
   probShow: '경기 전 승리 확률 보기',
   probHide: '승리 확률 숨기기',
   // ---- tournament forecast ----

@@ -163,6 +163,8 @@ const fa: Dict = {
   probEt: 'برد در وقت اضافه',
   probPens: 'برد در ضربات پنالتی',
   probNote: 'برآورد مدل بر اساس نتایج تاریخی، صرفا جنبه سرگرمی دارد.',
+  assistsShow: 'نمایش پاس گل',
+  assistsHide: 'پنهان کردن پاس گل',
   probShow: 'نمایش احتمال برد پیش از بازی',
   probHide: 'پنهان کردن احتمال برد',
   // ---- tournament forecast ----

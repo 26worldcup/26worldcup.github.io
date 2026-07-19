@@ -165,6 +165,8 @@ const it: Dict = {
   probEt: 'Vittoria ai supplementari',
   probPens: 'Vittoria ai rigori',
   probNote: 'Stima del modello su risultati storici, solo a scopo indicativo.',
+  assistsShow: 'Mostra gli assist',
+  assistsHide: 'Nascondi gli assist',
   probShow: 'Mostra le probabilità pre-partita',
   probHide: 'Nascondi le probabilità',
   // ---- tournament forecast ----

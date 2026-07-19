@@ -111,6 +111,7 @@ export default function MatchDetail() {
   const { settings } = useSettings()
   const { matches, teams, venues, weather, lineups, broadcasters, probs } = useAppData()
   const [showProbPast, setShowProbPast] = useState(false)
+  const [showAssists, setShowAssists] = useState(false)
 
   const m = matches.find((x) => x.id === id)
   const venue = m?.venueId ? (venues[m.venueId] ?? null) : null
@@ -171,6 +172,35 @@ export default function MatchDetail() {
     }
     collect(lu.home, lu.away, m.home?.code ?? null, m.away?.code ?? null)
     collect(lu.away, lu.home, m.away?.code ?? null, m.home?.code ?? null)
+    return rows.sort((a, b) => (parseInt(a.minute || '0', 10) || 0) - (parseInt(b.minute || '0', 10) || 0))
+  }, [lu, m])
+
+  // assists, behind a toggle under the goal list. FIFA credits one per goal at most and
+  // never for an own goal or a penalty, and each sits in its own scorer's team, so unlike
+  // goals there is no cross-side lookup to do
+  const assistRows = useMemo<GoalRow[]>(() => {
+    if (!m || !lu) return []
+    const rows: GoalRow[] = []
+    for (const [tl, code] of [
+      [lu.home, m.home?.code ?? null],
+      [lu.away, m.away?.code ?? null],
+    ] as const) {
+      if (!tl) continue
+      const all = [...tl.xi, ...tl.subs]
+      ;(tl.assists ?? []).forEach((a, i) => {
+        const p = all.find((x) => x.id === a.player)
+        rows.push({
+          key: `a-${code ?? 'x'}-${i}`,
+          minute: a.minute,
+          name: p?.name || a.player,
+          code,
+          num: p?.number ?? null,
+          playerCode: code,
+          own: false,
+          pen: false,
+        })
+      })
+    }
     return rows.sort((a, b) => (parseInt(a.minute || '0', 10) || 0) - (parseInt(b.minute || '0', 10) || 0))
   }, [lu, m])
 
@@ -362,6 +392,43 @@ export default function MatchDetail() {
                 ))}
             </div>
           </div>
+        )}
+        {showScore && assistRows.length > 0 && (
+          <>
+            <button
+              type="button"
+              className="md-prob-show md-assist-toggle small"
+              aria-expanded={showAssists}
+              onClick={() => setShowAssists((v) => !v)}
+            >
+              <span aria-hidden="true">👟</span> {t(showAssists ? 'assistsHide' : 'assistsShow')}
+            </button>
+            {showAssists && (
+              <div className="md-scorers small">
+                <div className="md-scorers-side">
+                  {assistRows
+                    .filter((a) => a.code === m.home?.code)
+                    .map((a) => (
+                      <div key={a.key}>
+                        {scorerName(a)} {a.minute}
+                      </div>
+                    ))}
+                </div>
+                <span className="md-scorers-ball" aria-hidden="true">
+                  👟
+                </span>
+                <div className="md-scorers-side away">
+                  {assistRows
+                    .filter((a) => a.code === m.away?.code)
+                    .map((a) => (
+                      <div key={a.key}>
+                        {a.minute} {scorerName(a)}
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
+          </>
         )}
         {showScore && redRows.length > 0 && (
           <div className="md-scorers small">

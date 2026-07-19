@@ -164,6 +164,8 @@ const cs: Dict = {
   probEt: 'Výhra v prodloužení',
   probPens: 'Výhra na penalty',
   probNote: 'Modelový odhad z historických výsledků, jen pro zajímavost.',
+  assistsShow: 'Zobrazit asistence',
+  assistsHide: 'Skrýt asistence',
   probShow: 'Zobrazit předzápasové pravděpodobnosti',
   probHide: 'Skrýt pravděpodobnosti',
   // ---- tournament forecast ----

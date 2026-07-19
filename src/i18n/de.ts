@@ -165,6 +165,8 @@ const de: Dict = {
   probEt: 'Sieg in der Verlängerung',
   probPens: 'Sieg im Elfmeterschießen',
   probNote: 'Modellschätzung aus historischen Ergebnissen, nur zur Orientierung.',
+  assistsShow: 'Vorlagen anzeigen',
+  assistsHide: 'Vorlagen ausblenden',
   probShow: 'Siegwahrscheinlichkeit vor dem Spiel anzeigen',
   probHide: 'Siegwahrscheinlichkeit ausblenden',
   // ---- tournament forecast ----
