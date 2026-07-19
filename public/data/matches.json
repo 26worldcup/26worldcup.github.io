@@ -7636,7 +7636,7 @@
    "date": "2026-07-19T19:00:00Z",
    "venueId": "400257536",
    "status": "live",
-   "time": null,
+   "time": "48'",
    "home": {
     "code": "ESP",
     "score": 0,
@@ -7650,7 +7650,7 @@
    "phA": "W101",
    "phB": "W102",
    "winner": null,
-   "attendance": null,
+   "attendance": 80663,
    "officials": [
     {
      "id": "315008",
