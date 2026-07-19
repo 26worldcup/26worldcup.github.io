@@ -72998,6 +72998,18 @@
      "on": "423646",
      "minute": "62'",
      "period": 5
+    },
+    {
+     "off": "447860",
+     "on": "447855",
+     "minute": "75'",
+     "period": 5
+    },
+    {
+     "off": "430750",
+     "on": "430733",
+     "minute": "75'",
+     "period": 5
     }
    ],
    "assists": []
@@ -73327,11 +73339,23 @@
      "on": "402925",
      "minute": "58'",
      "period": 5
+    },
+    {
+     "off": "431196",
+     "on": "418963",
+     "minute": "70'",
+     "period": 5
+    },
+    {
+     "off": "428882",
+     "on": "485595",
+     "minute": "70'",
+     "period": 5
     }
    ],
    "assists": []
   },
-  "matchTime": "62'",
+  "matchTime": "76'",
   "period": 5,
   "final": false,
   "secTried": true,
