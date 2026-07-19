@@ -7636,10 +7636,10 @@
    "date": "2026-07-19T19:00:00Z",
    "venueId": "400257536",
    "status": "live",
-   "time": "104'",
+   "time": "112'",
    "home": {
     "code": "ESP",
-    "score": 0,
+    "score": 1,
     "pen": null
    },
    "away": {
