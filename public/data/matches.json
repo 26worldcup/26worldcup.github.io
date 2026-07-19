@@ -7635,16 +7635,16 @@
    "group": null,
    "date": "2026-07-19T19:00:00Z",
    "venueId": "400257536",
-   "status": "scheduled",
-   "time": "0'",
+   "status": "live",
+   "time": "11'",
    "home": {
     "code": "ESP",
-    "score": null,
+    "score": 0,
     "pen": null
    },
    "away": {
     "code": "ARG",
-    "score": null,
+    "score": 0,
     "pen": null
    },
    "phA": "W101",
