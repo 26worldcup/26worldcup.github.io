@@ -1206,14 +1206,22 @@
   }
  ],
  "cards": {
-  "yellow": 266,
-  "red": 14,
+  "yellow": 267,
+  "red": 15,
   "players": [
    {
     "id": "393480",
     "name": "Breel EMBOLO",
     "code": "SUI",
     "no": 7,
+    "y": 1,
+    "r": 1
+   },
+   {
+    "id": "448252",
+    "name": "Enzo FERNANDEZ",
+    "code": "ARG",
+    "no": 24,
     "y": 1,
     "r": 1
    },
@@ -1358,14 +1366,6 @@
     "name": "AMIR ALAMMARI",
     "code": "IRQ",
     "no": 16,
-    "y": 2,
-    "r": 0
-   },
-   {
-    "id": "395205",
-    "name": "BERNARDO SILVA",
-    "code": "POR",
-    "no": 10,
     "y": 2,
     "r": 0
    }

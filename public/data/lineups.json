@@ -73325,6 +73325,18 @@
      "minute": "82'",
      "card": 1,
      "period": 5
+    },
+    {
+     "player": "431196",
+     "minute": "90'+2'",
+     "card": 1,
+     "period": 5
+    },
+    {
+     "player": "448252",
+     "minute": "90'+3'",
+     "card": 3,
+     "period": 5
     }
    ],
    "substitutions": [
@@ -73362,7 +73374,7 @@
    "assists": []
   },
   "matchTime": "90'",
-  "period": 5,
+  "period": 7,
   "final": false,
   "secTried": true,
   "v": 3
