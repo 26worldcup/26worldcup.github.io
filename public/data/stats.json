@@ -18,7 +18,7 @@
    "goals": 8,
    "assists": 4,
    "ownGoals": 0,
-   "mins": 620
+   "mins": 740
   },
   {
    "id": "448202",
@@ -68,7 +68,7 @@
    "goals": 5,
    "assists": 1,
    "ownGoals": 0,
-   "mins": 543
+   "mins": 605
   },
   {
    "id": "401889",
@@ -430,7 +430,7 @@
    "goals": 8,
    "assists": 4,
    "ownGoals": 0,
-   "mins": 620
+   "mins": 740
   },
   {
    "id": "430605",
@@ -733,16 +733,6 @@
    "mins": 390
   },
   {
-   "id": "430750",
-   "name": "Dani OLMO",
-   "code": "ESP",
-   "no": 10,
-   "goals": 0,
-   "assists": 2,
-   "ownGoals": 0,
-   "mins": 419
-  },
-  {
    "id": "483442",
    "name": "Patrick BERG",
    "code": "NOR",
@@ -753,6 +743,16 @@
    "mins": 444
   },
   {
+   "id": "430750",
+   "name": "Dani OLMO",
+   "code": "ESP",
+   "no": 10,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 494
+  },
+  {
    "id": "430735",
    "name": "Marc CUCURELLA",
    "code": "ESP",
@@ -760,7 +760,7 @@
    "goals": 0,
    "assists": 2,
    "ownGoals": 0,
-   "mins": 630
+   "mins": 750
   },
   {
    "id": "448202",
@@ -790,7 +790,7 @@
    "goals": 5,
    "assists": 1,
    "ownGoals": 0,
-   "mins": 543
+   "mins": 605
   },
   {
    "id": "401889",
@@ -804,6 +804,86 @@
   }
  ],
  "minutes": [
+  {
+   "id": "308300",
+   "name": "Emiliano MARTINEZ",
+   "code": "ARG",
+   "no": 23,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 810
+  },
+  {
+   "id": "430628",
+   "name": "Alexis MAC ALLISTER",
+   "code": "ARG",
+   "no": 20,
+   "goals": 1,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 750
+  },
+  {
+   "id": "430735",
+   "name": "Marc CUCURELLA",
+   "code": "ESP",
+   "no": 24,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 750
+  },
+  {
+   "id": "474973",
+   "name": "Pau CUBARSI",
+   "code": "ESP",
+   "no": 22,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 750
+  },
+  {
+   "id": "430753",
+   "name": "Unai SIMON",
+   "code": "ESP",
+   "no": 23,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 750
+  },
+  {
+   "id": "229397",
+   "name": "Lionel MESSI",
+   "code": "ARG",
+   "no": 10,
+   "goals": 8,
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 740
+  },
+  {
+   "id": "335999",
+   "name": "Aymeric LAPORTE",
+   "code": "ESP",
+   "no": 14,
+   "goals": 0,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 728
+  },
+  {
+   "id": "411375",
+   "name": "RODRI",
+   "code": "ESP",
+   "no": 16,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 726
+  },
   {
    "id": "448332",
    "name": "Mike MAIGNAN",
@@ -825,16 +905,6 @@
    "mins": 697
   },
   {
-   "id": "308300",
-   "name": "Emiliano MARTINEZ",
-   "code": "ARG",
-   "no": 23,
-   "goals": 0,
-   "assists": 0,
-   "ownGoals": 0,
-   "mins": 690
-  },
-  {
    "id": "405841",
    "name": "Marc GUEHI",
    "code": "ENG",
@@ -853,6 +923,16 @@
    "assists": 1,
    "ownGoals": 0,
    "mins": 661
+  },
+  {
+   "id": "448252",
+   "name": "Enzo FERNANDEZ",
+   "code": "ARG",
+   "no": 24,
+   "goals": 2,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 660
   },
   {
    "id": "336022",
@@ -905,74 +985,14 @@
    "mins": 634
   },
   {
-   "id": "430628",
-   "name": "Alexis MAC ALLISTER",
+   "id": "402921",
+   "name": "Lisandro MARTINEZ",
    "code": "ARG",
-   "no": 20,
+   "no": 6,
    "goals": 1,
    "assists": 1,
    "ownGoals": 0,
-   "mins": 630
-  },
-  {
-   "id": "430735",
-   "name": "Marc CUCURELLA",
-   "code": "ESP",
-   "no": 24,
-   "goals": 0,
-   "assists": 2,
-   "ownGoals": 0,
-   "mins": 630
-  },
-  {
-   "id": "474973",
-   "name": "Pau CUBARSI",
-   "code": "ESP",
-   "no": 22,
-   "goals": 0,
-   "assists": 0,
-   "ownGoals": 0,
-   "mins": 630
-  },
-  {
-   "id": "430753",
-   "name": "Unai SIMON",
-   "code": "ESP",
-   "no": 23,
-   "goals": 0,
-   "assists": 0,
-   "ownGoals": 0,
-   "mins": 630
-  },
-  {
-   "id": "335999",
-   "name": "Aymeric LAPORTE",
-   "code": "ESP",
-   "no": 14,
-   "goals": 0,
-   "assists": 1,
-   "ownGoals": 0,
-   "mins": 629
-  },
-  {
-   "id": "411375",
-   "name": "RODRI",
-   "code": "ESP",
-   "no": 16,
-   "goals": 0,
-   "assists": 0,
-   "ownGoals": 0,
-   "mins": 627
-  },
-  {
-   "id": "229397",
-   "name": "Lionel MESSI",
-   "code": "ARG",
-   "no": 10,
-   "goals": 8,
-   "assists": 4,
-   "ownGoals": 0,
-   "mins": 620
+   "mins": 626
   },
   {
    "id": "448202",
@@ -985,6 +1005,36 @@
    "mins": 616
   },
   {
+   "id": "484320",
+   "name": "Lamine YAMAL",
+   "code": "ESP",
+   "no": 19,
+   "goals": 1,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 615
+  },
+  {
+   "id": "431196",
+   "name": "Cristian ROMERO",
+   "code": "ARG",
+   "no": 13,
+   "goals": 1,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 611
+  },
+  {
+   "id": "430751",
+   "name": "Mikel OYARZABAL",
+   "code": "ESP",
+   "no": 21,
+   "goals": 5,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 605
+  },
+  {
    "id": "430707",
    "name": "Jules KOUNDE",
    "code": "FRA",
@@ -993,6 +1043,16 @@
    "assists": 0,
    "ownGoals": 0,
    "mins": 602
+  },
+  {
+   "id": "416081",
+   "name": "Julian ALVAREZ",
+   "code": "ARG",
+   "no": 9,
+   "goals": 1,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 601
   },
   {
    "id": "311558",
@@ -1065,26 +1125,6 @@
    "mins": 585
   },
   {
-   "id": "402921",
-   "name": "Lisandro MARTINEZ",
-   "code": "ARG",
-   "no": 6,
-   "goals": 1,
-   "assists": 1,
-   "ownGoals": 0,
-   "mins": 582
-  },
-  {
-   "id": "448252",
-   "name": "Enzo FERNANDEZ",
-   "code": "ARG",
-   "no": 24,
-   "goals": 2,
-   "assists": 0,
-   "ownGoals": 0,
-   "mins": 570
-  },
-  {
    "id": "400721",
    "name": "Achraf HAKIMI",
    "code": "MAR",
@@ -1113,6 +1153,16 @@
    "assists": 0,
    "ownGoals": 1,
    "mins": 570
+  },
+  {
+   "id": "430144",
+   "name": "Pedro PORRO",
+   "code": "ESP",
+   "no": 12,
+   "goals": 2,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 563
   },
   {
    "id": "485740",
@@ -1145,64 +1195,14 @@
    "mins": 551
   },
   {
-   "id": "430751",
-   "name": "Mikel OYARZABAL",
-   "code": "ESP",
-   "no": 21,
-   "goals": 5,
-   "assists": 1,
-   "ownGoals": 0,
-   "mins": 543
-  },
-  {
-   "id": "431196",
-   "name": "Cristian ROMERO",
+   "id": "402925",
+   "name": "Nahuel MOLINA",
    "code": "ARG",
-   "no": 13,
-   "goals": 1,
-   "assists": 0,
-   "ownGoals": 0,
-   "mins": 541
-  },
-  {
-   "id": "313559",
-   "name": "Ricardo RODRIGUEZ",
-   "code": "SUI",
-   "no": 13,
+   "no": 26,
    "goals": 0,
-   "assists": 1,
-   "ownGoals": 0,
-   "mins": 520
-  },
-  {
-   "id": "448355",
-   "name": "Leandro TROSSARD",
-   "code": "BEL",
-   "no": 10,
-   "goals": 2,
-   "assists": 2,
-   "ownGoals": 0,
-   "mins": 510
-  },
-  {
-   "id": "393480",
-   "name": "Breel EMBOLO",
-   "code": "SUI",
-   "no": 7,
-   "goals": 2,
-   "assists": 2,
-   "ownGoals": 0,
-   "mins": 505
-  },
-  {
-   "id": "416081",
-   "name": "Julian ALVAREZ",
-   "code": "ARG",
-   "no": 9,
-   "goals": 1,
    "assists": 0,
    "ownGoals": 0,
-   "mins": 499
+   "mins": 531
   }
  ],
  "cards": {
@@ -1371,7 +1371,7 @@
    }
   ]
  },
- "attAvg": 65314,
+ "attAvg": 65463,
  "biggestWin": {
   "diff": 6,
   "id": "400021464",
@@ -1476,7 +1476,7 @@
    "SEN": -3,
    "IRQ": -8,
    "NOR": -3,
-   "ARG": -9,
+   "ARG": -17,
    "ALG": -3,
    "AUT": -5,
    "JOR": -4,
