@@ -288,7 +288,11 @@ const nl: Dict = {
   tsConvNote:
     'Uitslagen na verlenging tellen als winst of verlies; strafschoppenreeksen tellen als gelijkspel.',
   topScorers: 'Topscorers',
+  topAssists: 'Meeste assists',
+  topMinutes: 'Meeste speelminuten',
   goals: 'Doelpunten',
+  assists: 'Assists',
+  minutesPlayed: 'Minuten',
   noStatsYet: 'Statistieken verschijnen zodra het toernooi bezig is.',
   matchesPlayed: 'Gespeelde wedstrijden',
   apps: 'Wed.',

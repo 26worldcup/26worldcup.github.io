@@ -284,7 +284,11 @@ const tr: Dict = {
   tsConvNote:
     'Uzatmalarda alınan sonuçlar galibiyet ve mağlubiyet, penaltı atışları ise beraberlik olarak sayılır.',
   topScorers: 'Gol krallığı',
+  topAssists: 'Asist krallığı',
+  topMinutes: 'Oynanan dakika',
   goals: 'Gol',
+  assists: 'Asist',
+  minutesPlayed: 'Dakika',
   noStatsYet: 'İstatistikler turnuva başladığında görünecek.',
   matchesPlayed: 'Oynanan maç',
   apps: 'Maç',

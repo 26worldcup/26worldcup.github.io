@@ -287,7 +287,11 @@ const hr: Dict = {
   tsConvNote:
     'Rezultati u produžecima broje se kao pobjede i porazi, a rezultati nakon jedanaesteraca kao neriješeni.',
   topScorers: 'Najbolji strijelci',
+  topAssists: 'Najbolji asistenti',
+  topMinutes: 'Odigrane minute',
   goals: 'Golovi',
+  assists: 'Asist.',
+  minutesPlayed: 'Minute',
   noStatsYet: 'Statistika će biti dostupna nakon početka turnira.',
   matchesPlayed: 'Odigrane utakmice',
   apps: 'Nast.',

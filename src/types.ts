@@ -253,8 +253,23 @@ export interface MatchProbs {
   pa?: number
 }
 
+// one player's tournament tallies. The three leaderboards below are each the top 40
+// of the same record type, so a row always shows all three numbers whichever tab is on
+export interface PlayerTally {
+  id: string
+  name: string
+  code: string
+  no?: number
+  goals: number
+  assists: number
+  ownGoals: number
+  mins: number
+}
+
 export interface Stats {
-  scorers: { id: string; name: string; code: string; no?: number; goals: number; ownGoals: number }[]
+  scorers: PlayerTally[]
+  assisters?: PlayerTally[]
+  minutes?: PlayerTally[]
   cards?: {
     yellow: number
     red: number

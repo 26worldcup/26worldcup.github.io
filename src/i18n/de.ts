@@ -288,7 +288,11 @@ const de: Dict = {
   tsConvNote:
     'Ergebnisse nach Verlängerung zählen als Siege und Niederlagen; ein Elfmeterschießen zählt als Unentschieden.',
   topScorers: 'Torschützenliste',
+  topAssists: 'Vorlagenliste',
+  topMinutes: 'Gespielte Minuten',
   goals: 'Tore',
+  assists: 'Vorlagen',
+  minutesPlayed: 'Minuten',
   noStatsYet: 'Statistiken erscheinen, sobald das Turnier läuft.',
   matchesPlayed: 'Gespielte Spiele',
   apps: 'Sp.',

@@ -288,7 +288,11 @@ const fr: Dict = {
   tsConvNote:
     'Les résultats en prolongation comptent comme des victoires et des défaites ; les tirs au but comptent comme des matchs nuls.',
   topScorers: 'Meilleurs buteurs',
+  topAssists: 'Meilleurs passeurs',
+  topMinutes: 'Temps de jeu',
   goals: 'Buts',
+  assists: 'Passes déc.',
+  minutesPlayed: 'Minutes',
   noStatsYet: 'Les statistiques apparaîtront une fois le tournoi commencé.',
   matchesPlayed: 'Matchs joués',
   apps: 'Matchs',

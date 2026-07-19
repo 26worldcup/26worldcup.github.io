@@ -287,7 +287,11 @@ const uz: Dict = {
   tsConvNote:
     "Qo'shimcha vaqtdagi natijalar g'alaba va mag'lubiyat, penaltilar seriyasi esa durang sifatida hisoblanadi.",
   topScorers: "To'purarlar",
+  topAssists: "Eng ko'p assist berganlar",
+  topMinutes: "O'ynalgan daqiqalar",
   goals: 'Gollar',
+  assists: 'Assistlar',
+  minutesPlayed: 'Daqiqalar',
   noStatsYet: "Statistika turnir boshlangach paydo bo'ladi.",
   matchesPlayed: "O'tkazilgan o'yinlar",
   apps: "O'yin",

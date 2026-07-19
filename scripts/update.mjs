@@ -32,8 +32,9 @@ const FIFA = 'https://api.fifa.com/api/v3'
 const ID_COMPETITION = '17'
 const ID_SEASON = '285023' // FIFA World Cup 2026
 // shape of a lineups.json entry. Finished matches latch out of refetching, so bump
-// this whenever a new field must be backfilled from the live feed (v2: booking.official)
-const LINEUP_V = 2
+// this whenever a new field must be backfilled from the live feed (v2: booking.official,
+// v3: side.assists)
+const LINEUP_V = 3
 // languages whose team names we synthesize from CLDR region names (FIFA doesn't serve them)
 const CLDR_LANGS = ['nl', 'sv', 'no', 'cs', 'hr', 'tr', 'uz', 'fa', 'uk']
 const REGION_DN = Object.fromEntries(
@@ -826,12 +827,21 @@ function parseLivePlayers(team) {
   }
 }
 
-// Precise goal times from the FIFA timeline (the live feed is minute-only). Returns
-// { home: [sec…], away: [sec…] } in scoring order, each the elapsed seconds within
-// the goal's period (goal Timestamp minus that period's "Start Time" Timestamp).
-// Detects goals by score increments, so it matches open play, penalties and own
-// goals alike and ignores shootout kicks (which don't move Home/AwayGoals).
-async function fetchGoalSecs(stageId, matchId) {
+// The FIFA timeline, which carries two things the live feed doesn't. Returns
+// { home: [sec…], away: [sec…], assists: { [idTeam]: [{ player, minute, period }] } }.
+//
+// secs: precise goal times (the live feed is minute-only), in scoring order, each the
+// elapsed seconds within the goal's period (goal Timestamp minus that period's "Start
+// Time" Timestamp). Detects goals by score increments, so it matches open play,
+// penalties and own goals alike and ignores shootout kicks (which don't move
+// Home/AwayGoals).
+//
+// assists: timeline Type 1 events, keyed by the scoring side's IdTeam. NOTE the polarity
+// is inverted from goal events (Type 0): here IdPlayer is the ASSISTER and IdSubPlayer
+// the scorer. Never derive assists from a goal's IdSubPlayer instead — on shootout kicks
+// that field holds the goalkeeper. FIFA emits no Type 1 for own goals or penalties, so
+// the rows need no filtering.
+async function fetchTimeline(stageId, matchId) {
   const d = await fetchJson(
     `${FIFA}/timelines/${ID_COMPETITION}/${ID_SEASON}/${stageId}/${matchId}?language=en`,
   )
@@ -841,10 +851,18 @@ async function fetchGoalSecs(stageId, matchId) {
   const periodStart = {}
   for (const e of events)
     if (e.Type === 7 && e.Period != null) periodStart[e.Period] ??= Date.parse(e.Timestamp)
-  const out = { home: [], away: [] }
+  const out = { home: [], away: [], assists: {} }
   let ph = 0
   let pa = 0
   for (const e of events) {
+    if (e.Type === 1 && e.IdPlayer != null && e.IdTeam != null) {
+      out.assists[e.IdTeam] ??= []
+      out.assists[e.IdTeam].push({
+        player: e.IdPlayer,
+        minute: e.MatchMinute ?? null,
+        period: e.Period ?? null,
+      })
+    }
     const start = periodStart[e.Period]
     const sec = start ? Math.max(0, Math.round((Date.parse(e.Timestamp) - start) / 1000)) : null
     const hg = Number(e.HomeGoals ?? 0)
@@ -881,7 +899,14 @@ function mergeFinalSide(prev, next) {
         : pg.map((g, i) => (g.sec == null && ng[i].sec != null ? { ...g, sec: ng[i].sec } : g))
   const pb = prev.bookings || []
   const nb = next.bookings || []
-  return { ...prev, goals, bookings: nb.length >= pb.length ? nb : pb }
+  const pa = prev.assists || []
+  const na = next.assists || []
+  return {
+    ...prev,
+    goals,
+    bookings: nb.length >= pb.length ? nb : pb,
+    assists: na.length >= pa.length ? na : pa,
+  }
 }
 
 async function fetchLiveDetails(matches, rawById) {
@@ -921,20 +946,22 @@ async function fetchLiveDetails(matches, rawById) {
       const away = parseLivePlayers(awayRaw)
       if (!home && !away) continue
       // attach exact goal seconds from the timeline (index-aligned per side; both
-      // the live Goals and the timeline list goals in scoring order)
+      // the live Goals and the timeline list goals in scoring order), plus that
+      // side's assists (the timeline keys them by IdTeam, the live feed by side)
       if (safeId(raw.IdStage)) {
         try {
-          const secs = await fetchGoalSecs(raw.IdStage, m.id)
-          if (secs)
-            for (const [side, obj] of [
-              ['home', home],
-              ['away', away],
+          const tlData = await fetchTimeline(raw.IdStage, m.id)
+          if (tlData)
+            for (const [side, obj, teamRaw] of [
+              ['home', home, homeRaw],
+              ['away', away, awayRaw],
             ]) {
               const g = obj?.goals
-              const tl = secs[side]
+              const tl = tlData[side]
               if (g && tl && g.length === tl.length) {
                 for (let i = 0; i < g.length; i++) if (tl[i] != null) g[i].sec = tl[i]
               } else if (g?.length) warn(`timeline ${m.id} ${side}: ${g.length} goals vs ${tl?.length ?? 0}`)
+              if (obj && teamRaw?.IdTeam != null) obj.assists = tlData.assists[teamRaw.IdTeam] ?? []
             }
         } catch (e) {
           if (e.status !== 404) warn(`timeline ${m.id}: ${e.message}`)
@@ -1087,16 +1114,106 @@ function attachWcStats(squads, lineups, matches) {
   }
 }
 
+// FIFA event Period codes. The three break periods carry an EMPTY minute string, so
+// they need the explicit fallback below: 4 is half time, 8 the extra-time half time,
+// and 17 the break BEFORE extra time (FIFA's own match report labels a substitution
+// there "PET", prior to extra time — it is not a shootout substitution, and two of the
+// matches carrying one never reached a shootout at all).
+// 10 is after the full-time whistle, stamped "90'", and is NOT extra time: two
+// regulation matches carry period-10 events, and reading those as extra time would hand
+// 22 players 30 phantom minutes each.
+const PERIOD_MINUTE = { 4: 45, 8: 105, 11: 120, 17: 90 }
+// a match reached extra time iff it carries an event in one of these periods: ET first
+// half, ET break, ET second half, shootout kick, pre-ET substitution. Clock-based tests
+// don't work — one regulation match ran to 109' on stoppage alone.
+const ET_PERIODS = new Set([7, 8, 9, 11, 17])
+
+// elapsed minute of an event under the capped convention: stoppage doesn't count, so a
+// goal at "45'+2'" is minute 45 and one at "90'+5'" is minute 90. `length` is the
+// match's own full time (90, or 120 once extra time was played).
+function eventMinute(minute, period, length) {
+  const s = String(minute ?? '')
+  const m = /^(\d+)/.exec(s)
+  if (!m) return PERIOD_MINUTE[period] ?? null
+  const base = parseInt(m[1], 10)
+  // a substitution in the stoppage time that ends the match: the player withdrawn is
+  // credited all but the last minute and the one replacing them gets that minute, which
+  // is how Opta and ESPN score it (verified player by player against ESPN's box score).
+  // Stoppage anywhere else still contributes nothing.
+  if (s.includes('+') && base >= length) return length - 1
+  return base
+}
+
+/**
+ * Minutes played per player across the tournament, from the lineups we already hold.
+ * FIFA publishes no minutes-played endpoint (the aggregate stats routes are 404 or
+ * return literal null), so this is derived: starters from 0, substitutes from the
+ * minute they came on, everyone until they're withdrawn, sent off, or the match ends.
+ *
+ * Someone who came on and someone who never left the bench are different things: the
+ * first always gets an entry here (1 minute at the very least), the second gets none.
+ * Callers must not collapse "no entry" and 0 into one falsy state.
+ */
+function computeMinutes(lineups, matches) {
+  const byId = Object.fromEntries(matches.map((m) => [m.id, m]))
+  const mins = {}
+  for (const [matchId, lu] of Object.entries(lineups)) {
+    // an in-progress match has no settled minutes; it lands on the next run
+    if (byId[matchId]?.status !== 'finished') continue
+    const periods = ['home', 'away'].flatMap((s) =>
+      [...(lu[s]?.goals || []), ...(lu[s]?.bookings || []), ...(lu[s]?.substitutions || [])].map(
+        (e) => e.period,
+      ),
+    )
+    const length = periods.some((p) => ET_PERIODS.has(p)) ? 120 : 90
+    for (const side of ['home', 'away']) {
+      const team = lu[side]
+      if (!team) continue
+      const on = {}
+      const off = {}
+      for (const p of team.xi || []) on[p.id] = 0
+      for (const s of team.substitutions || []) {
+        const min = eventMinute(s.minute, s.period, length)
+        if (min == null) continue
+        if (s.on != null) on[s.on] = min
+        if (s.off != null) off[s.off] = min
+      }
+      for (const b of team.bookings || []) {
+        // card 2+ is a dismissal; a card with no IdPlayer went to a coach or official
+        if (!b.player || (b.card ?? 0) < 2) continue
+        const min = eventMinute(b.minute, b.period, length)
+        if (min != null && (off[b.player] == null || min < off[b.player])) off[b.player] = min
+      }
+      // a dismissal for someone who never came on leaves an `off` with no `on`: ignored,
+      // since only players present in `on` actually took the field
+      for (const [pid, start] of Object.entries(on))
+        mins[pid] = (mins[pid] ?? 0) + Math.max(0, Math.min(off[pid] ?? length, length) - start)
+    }
+  }
+  return mins
+}
+
 function computeStats(lineups, matches) {
   const scorers = {}
   const byId = Object.fromEntries(matches.map((m) => [m.id, m]))
-  // FIFA player id -> shirt number (stable across the tournament); lets the UI
-  // link a scorer/booking to that player's squad card (joined by team + number)
+  // FIFA player id -> { name, code, no }. The shirt number is stable across the
+  // tournament and lets the UI link a scorer/booking to that player's squad card
+  // (joined by team + number); name and team cover players who reach a leaderboard
+  // without ever scoring, i.e. the minutes-played one
+  const playerMeta = {}
   const numberOf = {}
-  for (const lu of Object.values(lineups))
-    for (const side of ['home', 'away'])
-      for (const p of [...(lu[side]?.xi || []), ...(lu[side]?.subs || [])])
+  for (const [matchId, lu] of Object.entries(lineups)) {
+    const m = byId[matchId]
+    if (!m) continue
+    for (const side of ['home', 'away']) {
+      const code = m[side]?.code
+      if (!code) continue
+      for (const p of [...(lu[side]?.xi || []), ...(lu[side]?.subs || [])]) {
         if (p.number != null) numberOf[p.id] = p.number
+        playerMeta[p.id] = { name: p.name, code, no: numberOf[p.id] }
+      }
+    }
+  }
   for (const [matchId, lu] of Object.entries(lineups)) {
     const m = byId[matchId]
     if (!m) continue
@@ -1106,39 +1223,53 @@ function computeStats(lineups, matches) {
       const other = side === 'home' ? 'away' : 'home'
       const nameIn = (sd, pid) =>
         (lu[sd]?.xi || []).concat(lu[sd]?.subs || []).find((p) => p.id === pid)?.name || `#${pid}`
+      // the record for a player, created on first goal/assist. `sd` is the side they
+      // play for, which for an own goal is the side that didn't benefit from it
+      const entry = (sd, pid) => {
+        const code = m[sd]?.code
+        if (!code) return null
+        scorers[pid] ??= {
+          id: pid,
+          name: nameIn(sd, pid),
+          code,
+          no: numberOf[pid],
+          goals: 0,
+          assists: 0,
+          ownGoals: 0,
+        }
+        return scorers[pid]
+      }
       for (const g of team.goals || []) {
         if (g.period === 11) continue // penalty shootout
         if (g.player == null) continue // no IdPlayer: can't attribute (see bookings below)
         const own = g.type === 3
-        const key = `${g.player}`
-        if (own) {
-          const code = m[other]?.code // the scorer plays for the other side
-          if (!code) continue
-          scorers[key] ??= {
-            id: g.player,
-            name: nameIn(other, g.player),
-            code,
-            no: numberOf[g.player],
-            goals: 0,
-            ownGoals: 0,
-          }
-          scorers[key].ownGoals++
-        } else {
-          const code = m[side]?.code
-          if (!code) continue
-          scorers[key] ??= {
-            id: g.player,
-            name: nameIn(side, g.player),
-            code,
-            no: numberOf[g.player],
-            goals: 0,
-            ownGoals: 0,
-          }
-          scorers[key].goals++
-        }
+        const rec = entry(own ? other : side, g.player)
+        if (!rec) continue
+        if (own) rec.ownGoals++
+        else rec.goals++
+      }
+      for (const a of team.assists || []) {
+        if (a.player == null) continue
+        const rec = entry(side, a.player)
+        if (rec) rec.assists++
       }
     }
   }
+  // everyone who took the field, so the minutes-played board isn't limited to scorers
+  const minsById = computeMinutes(lineups, matches)
+  for (const [pid, meta] of Object.entries(playerMeta)) {
+    if (minsById[pid] == null) continue // unused substitute: never played
+    scorers[pid] ??= {
+      id: pid,
+      name: meta.name,
+      code: meta.code,
+      no: meta.no,
+      goals: 0,
+      assists: 0,
+      ownGoals: 0,
+    }
+  }
+  for (const s of Object.values(scorers)) s.mins = minsById[s.id] ?? 0
   // discipline: player bookings (card 1 = yellow, >=2 = red incl. second yellow)
   const carded = {}
   let yellow = 0
@@ -1243,11 +1374,33 @@ function computeStats(lineups, matches) {
     }
   }
 
+  // three independent top-40 boards over the same rows, each led by its own column and
+  // falling through to the adidas Golden Boot criteria (goals, assists, fewest minutes)
+  const tallies = Object.values(scorers)
+  const board = (has, key) =>
+    tallies
+      .filter(has)
+      .sort((a, b) => {
+        const ka = key(a)
+        const kb = key(b)
+        for (let i = 0; i < ka.length; i++) if (ka[i] !== kb[i]) return ka[i] - kb[i]
+        return a.name.localeCompare(b.name)
+      })
+      .slice(0, 40)
+
   return {
-    scorers: Object.values(scorers)
-      .filter((s) => s.goals > 0)
-      .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
-      .slice(0, 40),
+    scorers: board(
+      (s) => s.goals > 0,
+      (s) => [-s.goals, -s.assists, s.mins],
+    ),
+    assisters: board(
+      (s) => s.assists > 0,
+      (s) => [-s.assists, -s.goals, s.mins],
+    ),
+    minutes: board(
+      (s) => s.mins > 0,
+      (s) => [-s.mins, -s.goals, -s.assists],
+    ),
     cards: {
       yellow,
       red,

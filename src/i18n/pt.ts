@@ -289,7 +289,11 @@ const pt: Dict = {
   tsConvNote:
     'Os resultados no prolongamento contam como vitórias e derrotas; as grandes penalidades contam como empates.',
   topScorers: 'Melhores marcadores',
+  topAssists: 'Melhores assistências',
+  topMinutes: 'Minutos jogados',
   goals: 'Golos',
+  assists: 'Assistências',
+  minutesPlayed: 'Minutos',
   noStatsYet: 'As estatísticas aparecerão quando o torneio estiver em curso.',
   matchesPlayed: 'Jogos disputados',
   apps: 'Jogos',

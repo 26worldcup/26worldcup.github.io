@@ -288,7 +288,11 @@ const ptBR: Dict = {
   tsConvNote:
     'Resultados na prorrogação contam como vitórias e derrotas; disputas de pênaltis contam como empates.',
   topScorers: 'Artilheiros',
+  topAssists: 'Líderes de assistências',
+  topMinutes: 'Minutos jogados',
   goals: 'Gols',
+  assists: 'Assistências',
+  minutesPlayed: 'Minutos',
   noStatsYet: 'As estatísticas aparecerão quando o torneio estiver em andamento.',
   matchesPlayed: 'Jogos disputados',
   apps: 'Jogos',

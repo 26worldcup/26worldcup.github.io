@@ -286,7 +286,11 @@ const sv: Dict = {
   tsConvNote:
     'Resultat i förlängning räknas som vinster och förluster; avgöranden på straffar räknas som oavgjort.',
   topScorers: 'Skytteliga',
+  topAssists: 'Assistliga',
+  topMinutes: 'Spelade minuter',
   goals: 'Mål',
+  assists: 'Assist',
+  minutesPlayed: 'Minuter',
   noStatsYet: 'Statistik visas när turneringen har börjat.',
   matchesPlayed: 'Spelade matcher',
   apps: 'Matcher',

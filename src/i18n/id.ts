@@ -286,7 +286,11 @@ const id: Dict = {
   tsConvNote:
     'Hasil di perpanjangan waktu dihitung sebagai kemenangan dan kekalahan; adu penalti dihitung sebagai seri.',
   topScorers: 'Pencetak gol terbanyak',
+  topAssists: 'Pemberi assist terbanyak',
+  topMinutes: 'Menit bermain',
   goals: 'Gol',
+  assists: 'Assist',
+  minutesPlayed: 'Menit',
   noStatsYet: 'Statistik akan tampil setelah turnamen bergulir.',
   matchesPlayed: 'Pertandingan dimainkan',
   apps: 'Main',

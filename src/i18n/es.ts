@@ -288,7 +288,11 @@ const es: Dict = {
   tsConvNote:
     'Los resultados en la prórroga cuentan como victorias y derrotas; las tandas de penales cuentan como empates.',
   topScorers: 'Goleadores',
+  topAssists: 'Máximos asistentes',
+  topMinutes: 'Minutos jugados',
   goals: 'Goles',
+  assists: 'Asistencias',
+  minutesPlayed: 'Minutos',
   noStatsYet: 'Las estadísticas aparecerán cuando comience el torneo.',
   matchesPlayed: 'Partidos jugados',
   apps: 'Part.',

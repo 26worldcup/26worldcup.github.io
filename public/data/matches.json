@@ -7592,6 +7592,39 @@
       "id": "Wasit",
       "ru": "Главный судья"
      }
+    },
+    {
+     "id": "416524",
+     "country": "MAR",
+     "role": "fourth",
+     "name": {
+      "en": "Jalal JAYED",
+      "fr": "Jalal JAYED",
+      "zh": "Jalal JAYED",
+      "ar": "Jalal JAYED",
+      "es": "Jalal JAYED",
+      "de": "Jalal JAYED",
+      "pt": "Jalal JAYED",
+      "it": "Jalal JAYED",
+      "ja": "Jalal JAYED",
+      "ko": "Jalal JAYED",
+      "id": "Jalal JAYED",
+      "ru": "Jalal JAYED"
+     },
+     "typeName": {
+      "en": "Fourth official",
+      "fr": "Quatrième arbitre",
+      "zh": "第四官员",
+      "ar": "الحَكَم الرابع",
+      "es": "Cuarto/a árbitro/a",
+      "de": "Vierter Offizieller",
+      "pt": "Quarto árbitro",
+      "it": "Quarto arbitro",
+      "ja": "第 4 審判員",
+      "ko": "대기심",
+      "id": "Ofisial keempat",
+      "ru": "Четвертый судья"
+     }
     }
    ]
   },

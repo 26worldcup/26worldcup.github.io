@@ -287,7 +287,11 @@ const it: Dict = {
   tsConvNote:
     'I risultati dopo i tempi supplementari contano come vittorie e sconfitte; i tiri di rigore contano come pareggi.',
   topScorers: 'Classifica marcatori',
+  topAssists: 'Classifica assist',
+  topMinutes: 'Minuti giocati',
   goals: 'Gol',
+  assists: 'Assist',
+  minutesPlayed: 'Minuti',
   noStatsYet: 'Le statistiche appariranno una volta iniziato il torneo.',
   matchesPlayed: 'Partite giocate',
   apps: 'Pres.',

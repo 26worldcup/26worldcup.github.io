@@ -286,7 +286,11 @@ const no: Dict = {
   tsConvNote:
     'Resultater i ekstraomganger teller som seiere og tap; straffekonkurranser teller som uavgjort.',
   topScorers: 'Toppscorere',
+  topAssists: 'Flest assists',
+  topMinutes: 'Spilte minutter',
   goals: 'Mål',
+  assists: 'Assists',
+  minutesPlayed: 'Minutter',
   noStatsYet: 'Statistikk vises når turneringen er i gang.',
   matchesPlayed: 'Spilte kamper',
   apps: 'Kamper',

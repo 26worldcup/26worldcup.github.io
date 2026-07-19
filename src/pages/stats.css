@@ -64,7 +64,7 @@
 }
 @media (min-width: 980px) {
   .sx-cols {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
@@ -84,8 +84,8 @@
 #sx-fair-play {
   scroll-margin-top: calc(var(--hdr-h, 58px) + 12px);
 }
-/* fair-play header: title + group/all segmented toggle */
-.sx-fp-head {
+/* card header: title + a segmented toggle (player leaderboard tabs, fair-play modes) */
+.sx-sec-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,16 +93,16 @@
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
-.sx-fp-head h2 {
+.sx-sec-head h2 {
   margin: 0;
 }
-.sx-fp-toggle {
+.sx-seg {
   display: inline-flex;
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   overflow: hidden;
 }
-.sx-fp-toggle button {
+.sx-seg button {
   padding: 4px 11px;
   border: 0;
   background: transparent;
@@ -115,15 +115,15 @@
     background 0.15s,
     color 0.15s;
 }
-.sx-fp-toggle button + button {
+.sx-seg button + button {
   border-inline-start: 1px solid var(--border);
 }
-.sx-fp-toggle button:hover {
+.sx-seg button:hover {
   color: var(--text);
 }
 /* active segment: blue background, white text — fixed blue (not --accent-2, which
    lightens in dark mode and would drop white-text contrast below AA) */
-.sx-fp-toggle button.on {
+.sx-seg button.on {
   background: #2563eb;
   color: #fff;
 }
@@ -192,6 +192,29 @@
   text-align: end;
   font-weight: 800;
   font-size: 1.1rem;
+}
+/* player leaderboard: all three tallies always show; the tab's own column is the
+   emphasised one, the other two sit back as context */
+.sx-table th.sx-val-h {
+  text-align: end;
+  white-space: nowrap;
+  padding-inline-start: 10px;
+}
+.sx-table th.sx-val-h.on {
+  color: var(--text);
+}
+.sx-val {
+  text-align: end;
+  white-space: nowrap;
+  padding-inline-start: 10px;
+  font-weight: 650;
+  font-size: 0.92rem;
+  color: var(--text-3);
+}
+.sx-val.on {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text);
 }
 
 /* FIFA ranking list — flows into 2 columns on wider screens */

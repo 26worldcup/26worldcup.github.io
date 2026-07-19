@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { useAppData } from '../data/DataContext'
 import { fmtCalendarDate } from '../utils/time'
+import type { PlayerTally } from '../types'
 import TeamName from '../components/TeamName'
 import Flag from '../components/Flag'
 import './stats.css'
@@ -33,6 +34,9 @@ export default function Stats() {
     })
     return () => cancelAnimationFrame(id)
   }, [searchParams])
+
+  // which of the three player leaderboards the tab strip has selected
+  const [boardMode, setBoardMode] = useState<'goals' | 'assists' | 'mins'>('goals')
 
   // fair-play (team conduct) score table: group-stage by default, toggleable to all.
   // once the group stage is over and the first knockout match has finished, the
@@ -77,15 +81,38 @@ export default function Stats() {
   // average goals per finished match, 1 decimal, Latin digits in every locale
   const goalsAvg = finished.length > 0 ? (goals / finished.length).toFixed(2) : null
 
-  // top scorers with tie-aware ranks
-  const scorers = stats.scorers.slice().sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
-  let prevGoals = -1
+  // player leaderboard: three independent top-40 lists sharing one row shape, so every
+  // row shows all three numbers whichever tab is on. Ranking follows the adidas Golden
+  // Boot order (goals, then assists, then FEWER minutes played) on the goals board; the
+  // other two lead with their own column and fall through to the same criteria.
+  const boardRows =
+    boardMode === 'assists'
+      ? (stats.assisters ?? [])
+      : boardMode === 'mins'
+        ? (stats.minutes ?? [])
+        : stats.scorers
+  // sort key as a tuple (negated where bigger is better); two players share a rank only
+  // when every criterion matches, so equal goals but fewer assists still ranks lower
+  const sortKey = (p: PlayerTally) =>
+    boardMode === 'assists'
+      ? [-p.assists, -p.goals, p.mins]
+      : boardMode === 'mins'
+        ? [-p.mins, -p.goals, -p.assists]
+        : [-p.goals, -p.assists, p.mins]
+  const sorted = boardRows.slice().sort((a, b) => {
+    const ka = sortKey(a)
+    const kb = sortKey(b)
+    for (let i = 0; i < ka.length; i++) if (ka[i] !== kb[i]) return ka[i] - kb[i]
+    return a.name.localeCompare(b.name)
+  })
+  let prevKey: number[] | null = null
   let prevRank = 0
-  const rankedScorers = scorers.map((s, i) => {
-    const rank = s.goals === prevGoals ? prevRank : i + 1
-    prevGoals = s.goals
+  const rankedPlayers = sorted.map((p, i) => {
+    const key = sortKey(p)
+    const rank = prevKey && key.every((v, j) => v === prevKey![j]) ? prevRank : i + 1
+    prevKey = key
     prevRank = rank
-    return { ...s, rank }
+    return { ...p, rank }
   })
 
   // all 48 teams by FIFA ranking, unranked last
@@ -190,8 +217,35 @@ export default function Stats() {
 
       <div className="sx-cols">
         <section className="card card-pad sx-card">
-          <h2>{t('topScorers')}</h2>
-          {rankedScorers.length === 0 ? (
+          <div className="sx-sec-head">
+            <h2>
+              {boardMode === 'assists'
+                ? t('topAssists')
+                : boardMode === 'mins'
+                  ? t('topMinutes')
+                  : t('topScorers')}
+            </h2>
+            <div className="sx-seg" role="group" aria-label={t('topScorers')}>
+              {(
+                [
+                  ['goals', t('goals')],
+                  ['assists', t('assists')],
+                  ['mins', t('minutesPlayed')],
+                ] as const
+              ).map(([mode, label]) => (
+                <button
+                  key={mode}
+                  type="button"
+                  className={boardMode === mode ? 'on' : ''}
+                  aria-pressed={boardMode === mode}
+                  onClick={() => setBoardMode(mode)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+          {rankedPlayers.length === 0 ? (
             <div className="empty">{t('noStatsYet')}</div>
           ) : (
             <table className="sx-table">
@@ -200,11 +254,13 @@ export default function Stats() {
                   <th />
                   <th />
                   <th />
-                  <th className="sx-goals-h">{t('goals')}</th>
+                  <th className={`sx-val-h${boardMode === 'goals' ? ' on' : ''}`}>{t('goals')}</th>
+                  <th className={`sx-val-h${boardMode === 'assists' ? ' on' : ''}`}>{t('assists')}</th>
+                  <th className={`sx-val-h${boardMode === 'mins' ? ' on' : ''}`}>{t('minutesPlayed')}</th>
                 </tr>
               </thead>
               <tbody>
-                {rankedScorers.map((s) => {
+                {rankedPlayers.map((s) => {
                   const team = teams[s.code]
                   return (
                     <tr key={s.id}>
@@ -228,7 +284,9 @@ export default function Stats() {
                           <span className="muted small">{s.code}</span>
                         )}
                       </td>
-                      <td className="sx-goals tnum">{s.goals}</td>
+                      <td className={`sx-val tnum${boardMode === 'goals' ? ' on' : ''}`}>{s.goals}</td>
+                      <td className={`sx-val tnum${boardMode === 'assists' ? ' on' : ''}`}>{s.assists}</td>
+                      <td className={`sx-val tnum${boardMode === 'mins' ? ' on' : ''}`}>{s.mins}</td>
                     </tr>
                   )
                 })}
@@ -301,9 +359,9 @@ export default function Stats() {
         </section>
 
         <section id="sx-fair-play" className="card card-pad sx-card">
-          <div className="sx-fp-head">
+          <div className="sx-sec-head">
             <h2>{t('fairPlay')}</h2>
-            <div className="sx-fp-toggle" role="group" aria-label={t('fairPlay')}>
+            <div className="sx-seg" role="group" aria-label={t('fairPlay')}>
               <button
                 type="button"
                 className={fpMode === 'group' ? 'on' : ''}

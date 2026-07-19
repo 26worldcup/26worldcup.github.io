@@ -6,7 +6,9 @@
    "code": "FRA",
    "no": 10,
    "goals": 10,
-   "ownGoals": 0
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 697
   },
   {
    "id": "229397",
@@ -14,15 +16,9 @@
    "code": "ARG",
    "no": 10,
    "goals": 8,
-   "ownGoals": 0
-  },
-  {
-   "id": "419652",
-   "name": "Erling HAALAND",
-   "code": "NOR",
-   "no": 9,
-   "goals": 7,
-   "ownGoals": 0
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 620
   },
   {
    "id": "448202",
@@ -30,15 +26,19 @@
    "code": "ENG",
    "no": 10,
    "goals": 7,
-   "ownGoals": 0
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 616
   },
   {
-   "id": "369419",
-   "name": "Harry KANE",
-   "code": "ENG",
+   "id": "419652",
+   "name": "Erling HAALAND",
+   "code": "NOR",
    "no": 9,
-   "goals": 6,
-   "ownGoals": 0
+   "goals": 7,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 465
   },
   {
    "id": "398680",
@@ -46,7 +46,19 @@
    "code": "FRA",
    "no": 7,
    "goals": 6,
-   "ownGoals": 0
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 597
+  },
+  {
+   "id": "369419",
+   "name": "Harry KANE",
+   "code": "ENG",
+   "no": 9,
+   "goals": 6,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 654
   },
   {
    "id": "430751",
@@ -54,7 +66,9 @@
    "code": "ESP",
    "no": 21,
    "goals": 5,
-   "ownGoals": 0
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 543
   },
   {
    "id": "401889",
@@ -62,7 +76,9 @@
    "code": "SEN",
    "no": 18,
    "goals": 4,
-   "ownGoals": 0
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 366
   },
   {
    "id": "429157",
@@ -70,7 +86,9 @@
    "code": "MEX",
    "no": 16,
    "goals": 4,
-   "ownGoals": 0
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 414
   },
   {
    "id": "405742",
@@ -78,23 +96,9 @@
    "code": "BRA",
    "no": 7,
    "goals": 4,
-   "ownGoals": 0
-  },
-  {
-   "id": "484860",
-   "name": "Bradley BARCOLA",
-   "code": "FRA",
-   "no": 12,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "424051",
-   "name": "Brian BROBBEY",
-   "code": "NED",
-   "no": 19,
-   "goals": 3,
-   "ownGoals": 0
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 441
   },
   {
    "id": "448196",
@@ -102,31 +106,9 @@
    "code": "ENG",
    "no": 7,
    "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "448362",
-   "name": "Charles DE KETELAERE",
-   "code": "BEL",
-   "no": 17,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "448152",
-   "name": "Cody GAKPO",
-   "code": "NED",
-   "no": 11,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "201200",
-   "name": "CRISTIANO RONALDO",
-   "code": "POR",
-   "no": 7,
-   "goals": 3,
-   "ownGoals": 0
+   "assists": 3,
+   "ownGoals": 0,
+   "mins": 358
   },
   {
    "id": "484851",
@@ -134,31 +116,9 @@
    "code": "GER",
    "no": 26,
    "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "405454",
-   "name": "Elijah JUST",
-   "code": "NZL",
-   "no": 11,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "466624",
-   "name": "Folarin BALOGUN",
-   "code": "USA",
-   "no": 20,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "448598",
-   "name": "Ismael SAIBARI",
-   "code": "MAR",
-   "no": 11,
-   "goals": 3,
-   "ownGoals": 0
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 149
   },
   {
    "id": "502727",
@@ -166,47 +126,9 @@
    "code": "SUI",
    "no": 9,
    "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "441257",
-   "name": "Jonathan DAVID",
-   "code": "CAN",
-   "no": 10,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "411367",
-   "name": "Kai HAVERTZ",
-   "code": "GER",
-   "no": 7,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "402920",
-   "name": "Lautaro MARTINEZ",
-   "code": "ARG",
-   "no": 22,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "430609",
-   "name": "MATHEUS CUNHA",
-   "code": "BRA",
-   "no": 9,
-   "goals": 3,
-   "ownGoals": 0
-  },
-  {
-   "id": "356731",
-   "name": "Raul JIMENEZ",
-   "code": "MEX",
-   "no": 9,
-   "goals": 3,
-   "ownGoals": 0
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 198
   },
   {
    "id": "358112",
@@ -214,7 +136,109 @@
    "code": "BEL",
    "no": 9,
    "goals": 3,
-   "ownGoals": 0
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 230
+  },
+  {
+   "id": "402920",
+   "name": "Lautaro MARTINEZ",
+   "code": "ARG",
+   "no": 22,
+   "goals": 3,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 310
+  },
+  {
+   "id": "448362",
+   "name": "Charles DE KETELAERE",
+   "code": "BEL",
+   "no": 17,
+   "goals": 3,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 353
+  },
+  {
+   "id": "448152",
+   "name": "Cody GAKPO",
+   "code": "NED",
+   "no": 11,
+   "goals": 3,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 371
+  },
+  {
+   "id": "484860",
+   "name": "Bradley BARCOLA",
+   "code": "FRA",
+   "no": 12,
+   "goals": 3,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 384
+  },
+  {
+   "id": "424051",
+   "name": "Brian BROBBEY",
+   "code": "NED",
+   "no": 19,
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 226
+  },
+  {
+   "id": "405454",
+   "name": "Elijah JUST",
+   "code": "NZL",
+   "no": 11,
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 265
+  },
+  {
+   "id": "430609",
+   "name": "MATHEUS CUNHA",
+   "code": "BRA",
+   "no": 9,
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 292
+  },
+  {
+   "id": "466624",
+   "name": "Folarin BALOGUN",
+   "code": "USA",
+   "no": 20,
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 314
+  },
+  {
+   "id": "356731",
+   "name": "Raul JIMENEZ",
+   "code": "MEX",
+   "no": 9,
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 319
+  },
+  {
+   "id": "411367",
+   "name": "Kai HAVERTZ",
+   "code": "GER",
+   "no": 7,
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 355
   },
   {
    "id": "441316",
@@ -222,47 +246,39 @@
    "code": "COD",
    "no": 20,
    "goals": 3,
-   "ownGoals": 0
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 360
   },
   {
-   "id": "430822",
-   "name": "Amad DIALLO",
-   "code": "CIV",
-   "no": 15,
-   "goals": 2,
-   "ownGoals": 0
-  },
-  {
-   "id": "441137",
-   "name": "Anthony ELANGA",
-   "code": "SWE",
-   "no": 11,
-   "goals": 2,
-   "ownGoals": 0
-  },
-  {
-   "id": "430413",
-   "name": "Ayase UEDA",
-   "code": "JPN",
-   "no": 18,
-   "goals": 2,
-   "ownGoals": 0
-  },
-  {
-   "id": "441307",
-   "name": "Azzedine OUNAHI",
+   "id": "448598",
+   "name": "Ismael SAIBARI",
    "code": "MAR",
-   "no": 8,
-   "goals": 2,
-   "ownGoals": 0
+   "no": 11,
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 384
   },
   {
-   "id": "393480",
-   "name": "Breel EMBOLO",
-   "code": "SUI",
+   "id": "441257",
+   "name": "Jonathan DAVID",
+   "code": "CAN",
+   "no": 10,
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 421
+  },
+  {
+   "id": "201200",
+   "name": "CRISTIANO RONALDO",
+   "code": "POR",
    "no": 7,
-   "goals": 2,
-   "ownGoals": 0
+   "goals": 3,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 441
   },
   {
    "id": "489518",
@@ -270,47 +286,793 @@
    "code": "NED",
    "no": 24,
    "goals": 2,
-   "ownGoals": 0
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 253
   },
   {
-   "id": "390670",
-   "name": "Cyle LARIN",
-   "code": "CAN",
+   "id": "393480",
+   "name": "Breel EMBOLO",
+   "code": "SUI",
+   "no": 7,
+   "goals": 2,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 505
+  },
+  {
+   "id": "448355",
+   "name": "Leandro TROSSARD",
+   "code": "BEL",
+   "no": 10,
+   "goals": 2,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 510
+  },
+  {
+   "id": "433426",
+   "name": "Soufiane RAHIMI",
+   "code": "MAR",
    "no": 9,
    "goals": 2,
-   "ownGoals": 0
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 158
   },
   {
-   "id": "448557",
-   "name": "Daichi KAMADA",
-   "code": "JPN",
-   "no": 15,
+   "id": "402261",
+   "name": "Nicolas PEPE",
+   "code": "CIV",
+   "no": 19,
    "goals": 2,
-   "ownGoals": 0
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 236
   },
   {
-   "id": "448114",
-   "name": "Dan NDOYE",
+   "id": "431788",
+   "name": "Pape GUEYE",
+   "code": "SEN",
+   "no": 26,
+   "goals": 2,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 237
+  },
+  {
+   "id": "419100",
+   "name": "Maxi ARAUJO",
+   "code": "URU",
+   "no": 20,
+   "goals": 2,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 252
+  },
+  {
+   "id": "379942",
+   "name": "Riyad MAHREZ",
+   "code": "ALG",
+   "no": 7,
+   "goals": 2,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 263
+  },
+  {
+   "id": "384797",
+   "name": "Ramin REZAEIAN",
+   "code": "IRN",
+   "no": 23,
+   "goals": 2,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 270
+  },
+  {
+   "id": "448131",
+   "name": "Ruben VARGAS",
    "code": "SUI",
+   "no": 17,
+   "goals": 2,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 282
+  },
+  {
+   "id": "430413",
+   "name": "Ayase UEDA",
+   "code": "JPN",
+   "no": 18,
+   "goals": 2,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 324
+  },
+  {
+   "id": "448214",
+   "name": "Malik TILLMAN",
+   "code": "USA",
+   "no": 17,
+   "goals": 2,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 356
+  }
+ ],
+ "assisters": [
+  {
+   "id": "485655",
+   "name": "Michael OLISE",
+   "code": "FRA",
    "no": 11,
-   "goals": 2,
-   "ownGoals": 0
+   "goals": 0,
+   "assists": 7,
+   "ownGoals": 0,
+   "mins": 650
   },
   {
-   "id": "431200",
-   "name": "Daniel MUNOZ",
-   "code": "COL",
-   "no": 2,
-   "goals": 2,
-   "ownGoals": 0
+   "id": "389867",
+   "name": "Kylian MBAPPE",
+   "code": "FRA",
+   "no": 10,
+   "goals": 10,
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 697
   },
   {
-   "id": "430482",
-   "name": "EMAM ASHOUR",
-   "code": "EGY",
+   "id": "229397",
+   "name": "Lionel MESSI",
+   "code": "ARG",
+   "no": 10,
+   "goals": 8,
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 620
+  },
+  {
+   "id": "430605",
+   "name": "BRUNO GUIMARAES",
+   "code": "BRA",
    "no": 8,
+   "goals": 0,
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 419
+  },
+  {
+   "id": "430740",
+   "name": "Brahim DIAZ",
+   "code": "MAR",
+   "no": 10,
+   "goals": 0,
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 460
+  },
+  {
+   "id": "400716",
+   "name": "Martin ODEGAARD",
+   "code": "NOR",
+   "no": 10,
+   "goals": 0,
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 471
+  },
+  {
+   "id": "448196",
+   "name": "Bukayo SAKA",
+   "code": "ENG",
+   "no": 7,
+   "goals": 3,
+   "assists": 3,
+   "ownGoals": 0,
+   "mins": 358
+  },
+  {
+   "id": "494626",
+   "name": "Andreas SCHJELDERUP",
+   "code": "NOR",
+   "no": 21,
+   "goals": 1,
+   "assists": 3,
+   "ownGoals": 0,
+   "mins": 250
+  },
+  {
+   "id": "430150",
+   "name": "Alexander ISAK",
+   "code": "SWE",
+   "no": 9,
+   "goals": 1,
+   "assists": 3,
+   "ownGoals": 0,
+   "mins": 359
+  },
+  {
+   "id": "448189",
+   "name": "Anthony GORDON",
+   "code": "ENG",
+   "no": 18,
+   "goals": 1,
+   "assists": 3,
+   "ownGoals": 0,
+   "mins": 400
+  },
+  {
+   "id": "430669",
+   "name": "Florian WIRTZ",
+   "code": "GER",
+   "no": 17,
+   "goals": 0,
+   "assists": 3,
+   "ownGoals": 0,
+   "mins": 363
+  },
+  {
+   "id": "403585",
+   "name": "Roberto ALVARADO",
+   "code": "MEX",
+   "no": 25,
+   "goals": 0,
+   "assists": 3,
+   "ownGoals": 0,
+   "mins": 430
+  },
+  {
+   "id": "398680",
+   "name": "Ousmane DEMBELE",
+   "code": "FRA",
+   "no": 7,
+   "goals": 6,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 597
+  },
+  {
+   "id": "484851",
+   "name": "Deniz UNDAV",
+   "code": "GER",
+   "no": 26,
+   "goals": 3,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 149
+  },
+  {
+   "id": "502727",
+   "name": "Johan MANZAMBI",
+   "code": "SUI",
+   "no": 9,
+   "goals": 3,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 198
+  },
+  {
+   "id": "489518",
+   "name": "Crysencio SUMMERVILLE",
+   "code": "NED",
+   "no": 24,
    "goals": 2,
-   "ownGoals": 0
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 253
+  },
+  {
+   "id": "393480",
+   "name": "Breel EMBOLO",
+   "code": "SUI",
+   "no": 7,
+   "goals": 2,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 505
+  },
+  {
+   "id": "448355",
+   "name": "Leandro TROSSARD",
+   "code": "BEL",
+   "no": 10,
+   "goals": 2,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 510
+  },
+  {
+   "id": "448815",
+   "name": "Iliman NDIAYE",
+   "code": "SEN",
+   "no": 13,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 114
+  },
+  {
+   "id": "423941",
+   "name": "Nathan SALIBA",
+   "code": "CAN",
+   "no": 25,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 183
+  },
+  {
+   "id": "448343",
+   "name": "Hans VANAKEN",
+   "code": "BEL",
+   "no": 20,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 319
+  },
+  {
+   "id": "483327",
+   "name": "Viktor GYOKERES",
+   "code": "SWE",
+   "no": 17,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 360
+  },
+  {
+   "id": "441234",
+   "name": "Julio ENCISO",
+   "code": "PAR",
+   "no": 19,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 387
+  },
+  {
+   "id": "344654",
+   "name": "MOHAMED SALAH",
+   "code": "EGY",
+   "no": 10,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 427
+  },
+  {
+   "id": "433097",
+   "name": "Declan RICE",
+   "code": "ENG",
+   "no": 4,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 558
+  },
+  {
+   "id": "400721",
+   "name": "Achraf HAKIMI",
+   "code": "MAR",
+   "no": 2,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 570
+  },
+  {
+   "id": "430698",
+   "name": "Houssem AOUAR",
+   "code": "ALG",
+   "no": 8,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 173
+  },
+  {
+   "id": "274078",
+   "name": "Chris WOOD",
+   "code": "NZL",
+   "no": 9,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 270
+  },
+  {
+   "id": "433378",
+   "name": "Hannibal MEJBRI",
+   "code": "TUN",
+   "no": 10,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 270
+  },
+  {
+   "id": "495349",
+   "name": "Nicolas RASKIN",
+   "code": "BEL",
+   "no": 23,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 340
+  },
+  {
+   "id": "430176",
+   "name": "Ryan GRAVENBERCH",
+   "code": "NED",
+   "no": 8,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 347
+  },
+  {
+   "id": "386413",
+   "name": "Joshua KIMMICH",
+   "code": "GER",
+   "no": 6,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 353
+  },
+  {
+   "id": "436612",
+   "name": "Denzel DUMFRIES",
+   "code": "NED",
+   "no": 22,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 390
+  },
+  {
+   "id": "430750",
+   "name": "Dani OLMO",
+   "code": "ESP",
+   "no": 10,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 419
+  },
+  {
+   "id": "483442",
+   "name": "Patrick BERG",
+   "code": "NOR",
+   "no": 6,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 444
+  },
+  {
+   "id": "430735",
+   "name": "Marc CUCURELLA",
+   "code": "ESP",
+   "no": 24,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 630
+  },
+  {
+   "id": "448202",
+   "name": "Jude BELLINGHAM",
+   "code": "ENG",
+   "no": 10,
+   "goals": 7,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 616
+  },
+  {
+   "id": "369419",
+   "name": "Harry KANE",
+   "code": "ENG",
+   "no": 9,
+   "goals": 6,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 654
+  },
+  {
+   "id": "430751",
+   "name": "Mikel OYARZABAL",
+   "code": "ESP",
+   "no": 21,
+   "goals": 5,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 543
+  },
+  {
+   "id": "401889",
+   "name": "Ismaila SARR",
+   "code": "SEN",
+   "no": 18,
+   "goals": 4,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 366
+  }
+ ],
+ "minutes": [
+  {
+   "id": "448332",
+   "name": "Mike MAIGNAN",
+   "code": "FRA",
+   "no": 16,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 720
+  },
+  {
+   "id": "389867",
+   "name": "Kylian MBAPPE",
+   "code": "FRA",
+   "no": 10,
+   "goals": 10,
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 697
+  },
+  {
+   "id": "308300",
+   "name": "Emiliano MARTINEZ",
+   "code": "ARG",
+   "no": 23,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 690
+  },
+  {
+   "id": "405841",
+   "name": "Marc GUEHI",
+   "code": "ENG",
+   "no": 6,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 662
+  },
+  {
+   "id": "389876",
+   "name": "Dayot UPAMECANO",
+   "code": "FRA",
+   "no": 4,
+   "goals": 0,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 661
+  },
+  {
+   "id": "336022",
+   "name": "Jordan PICKFORD",
+   "code": "ENG",
+   "no": 1,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 660
+  },
+  {
+   "id": "369419",
+   "name": "Harry KANE",
+   "code": "ENG",
+   "no": 9,
+   "goals": 6,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 654
+  },
+  {
+   "id": "485655",
+   "name": "Michael OLISE",
+   "code": "FRA",
+   "no": 11,
+   "goals": 0,
+   "assists": 7,
+   "ownGoals": 0,
+   "mins": 650
+  },
+  {
+   "id": "403049",
+   "name": "Ezri KONSA",
+   "code": "ENG",
+   "no": 2,
+   "goals": 1,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 647
+  },
+  {
+   "id": "481610",
+   "name": "Elliot ANDERSON",
+   "code": "ENG",
+   "no": 8,
+   "goals": 0,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 634
+  },
+  {
+   "id": "430628",
+   "name": "Alexis MAC ALLISTER",
+   "code": "ARG",
+   "no": 20,
+   "goals": 1,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 630
+  },
+  {
+   "id": "430735",
+   "name": "Marc CUCURELLA",
+   "code": "ESP",
+   "no": 24,
+   "goals": 0,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 630
+  },
+  {
+   "id": "474973",
+   "name": "Pau CUBARSI",
+   "code": "ESP",
+   "no": 22,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 630
+  },
+  {
+   "id": "430753",
+   "name": "Unai SIMON",
+   "code": "ESP",
+   "no": 23,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 630
+  },
+  {
+   "id": "335999",
+   "name": "Aymeric LAPORTE",
+   "code": "ESP",
+   "no": 14,
+   "goals": 0,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 629
+  },
+  {
+   "id": "411375",
+   "name": "RODRI",
+   "code": "ESP",
+   "no": 16,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 627
+  },
+  {
+   "id": "229397",
+   "name": "Lionel MESSI",
+   "code": "ARG",
+   "no": 10,
+   "goals": 8,
+   "assists": 4,
+   "ownGoals": 0,
+   "mins": 620
+  },
+  {
+   "id": "448202",
+   "name": "Jude BELLINGHAM",
+   "code": "ENG",
+   "no": 10,
+   "goals": 7,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 616
+  },
+  {
+   "id": "430707",
+   "name": "Jules KOUNDE",
+   "code": "FRA",
+   "no": 5,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 602
+  },
+  {
+   "id": "311558",
+   "name": "Granit XHAKA",
+   "code": "SUI",
+   "no": 10,
+   "goals": 1,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 600
+  },
+  {
+   "id": "448107",
+   "name": "Gregor KOBEL",
+   "code": "SUI",
+   "no": 1,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 600
+  },
+  {
+   "id": "405178",
+   "name": "Manuel AKANJI",
+   "code": "SUI",
+   "no": 5,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 600
+  },
+  {
+   "id": "398509",
+   "name": "Nico ELVEDI",
+   "code": "SUI",
+   "no": 4,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 600
+  },
+  {
+   "id": "398680",
+   "name": "Ousmane DEMBELE",
+   "code": "FRA",
+   "no": 7,
+   "goals": 6,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 597
+  },
+  {
+   "id": "402021",
+   "name": "Remo FREULER",
+   "code": "SUI",
+   "no": 8,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 594
+  },
+  {
+   "id": "402047",
+   "name": "Adrien RABIOT",
+   "code": "FRA",
+   "no": 14,
+   "goals": 0,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 585
+  },
+  {
+   "id": "402921",
+   "name": "Lisandro MARTINEZ",
+   "code": "ARG",
+   "no": 6,
+   "goals": 1,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 582
   },
   {
    "id": "448252",
@@ -318,7 +1080,129 @@
    "code": "ARG",
    "no": 24,
    "goals": 2,
-   "ownGoals": 0
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 570
+  },
+  {
+   "id": "400721",
+   "name": "Achraf HAKIMI",
+   "code": "MAR",
+   "no": 2,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 570
+  },
+  {
+   "id": "448360",
+   "name": "Brandon MECHELE",
+   "code": "BEL",
+   "no": 4,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 570
+  },
+  {
+   "id": "356956",
+   "name": "Yassine BOUNOU",
+   "code": "MAR",
+   "no": 1,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 1,
+   "mins": 570
+  },
+  {
+   "id": "485740",
+   "name": "Neil EL AYNAOUI",
+   "code": "MAR",
+   "no": 24,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 563
+  },
+  {
+   "id": "433097",
+   "name": "Declan RICE",
+   "code": "ENG",
+   "no": 4,
+   "goals": 1,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 558
+  },
+  {
+   "id": "358106",
+   "name": "Thibaut COURTOIS",
+   "code": "BEL",
+   "no": 1,
+   "goals": 0,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 551
+  },
+  {
+   "id": "430751",
+   "name": "Mikel OYARZABAL",
+   "code": "ESP",
+   "no": 21,
+   "goals": 5,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 543
+  },
+  {
+   "id": "431196",
+   "name": "Cristian ROMERO",
+   "code": "ARG",
+   "no": 13,
+   "goals": 1,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 541
+  },
+  {
+   "id": "313559",
+   "name": "Ricardo RODRIGUEZ",
+   "code": "SUI",
+   "no": 13,
+   "goals": 0,
+   "assists": 1,
+   "ownGoals": 0,
+   "mins": 520
+  },
+  {
+   "id": "448355",
+   "name": "Leandro TROSSARD",
+   "code": "BEL",
+   "no": 10,
+   "goals": 2,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 510
+  },
+  {
+   "id": "393480",
+   "name": "Breel EMBOLO",
+   "code": "SUI",
+   "no": 7,
+   "goals": 2,
+   "assists": 2,
+   "ownGoals": 0,
+   "mins": 505
+  },
+  {
+   "id": "416081",
+   "name": "Julian ALVAREZ",
+   "code": "ARG",
+   "no": 9,
+   "goals": 1,
+   "assists": 0,
+   "ownGoals": 0,
+   "mins": 499
   }
  ],
  "cards": {
