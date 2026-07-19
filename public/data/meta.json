@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-07-19T13:43:50.942Z",
+ "updatedAt": "2026-07-19T18:35:57.643Z",
  "season": "285023",
  "titleOdds": [
   {
    "c": "ESP",
-   "p": 54.5
+   "p": 55.5
   },
   {
    "c": "ARG",
-   "p": 45.5
+   "p": 44.5
   }
  ],
  "counts": {
@@ -16,7 +16,7 @@
   "teams": 48,
   "squads": 48,
   "weather": 104,
-  "lineups": 103,
+  "lineups": 104,
   "flags": 179
  },
  "errors": [

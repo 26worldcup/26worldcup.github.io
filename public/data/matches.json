@@ -7636,7 +7636,7 @@
    "date": "2026-07-19T19:00:00Z",
    "venueId": "400257536",
    "status": "scheduled",
-   "time": null,
+   "time": "0'",
    "home": {
     "code": "ESP",
     "score": null,
@@ -7683,39 +7683,6 @@
       "ko": "주심",
       "id": "Wasit",
       "ru": "Главный судья"
-     }
-    },
-    {
-     "id": "361034",
-     "country": "JOR",
-     "role": "fourth",
-     "name": {
-      "en": "Adham MAKHADMEH",
-      "fr": "Adham MAKHADMEH",
-      "zh": "Adham MAKHADMEH",
-      "ar": "Adham MAKHADMEH",
-      "es": "Adham MAKHADMEH",
-      "de": "Adham MAKHADMEH",
-      "pt": "Adham MAKHADMEH",
-      "it": "Adham MAKHADMEH",
-      "ja": "Adham MAKHADMEH",
-      "ko": "Adham MAKHADMEH",
-      "id": "Adham MAKHADMEH",
-      "ru": "Adham MAKHADMEH"
-     },
-     "typeName": {
-      "en": "Fourth official",
-      "fr": "Quatrième arbitre",
-      "zh": "第四官员",
-      "ar": "الحَكَم الرابع",
-      "es": "Cuarto/a árbitro/a",
-      "de": "Vierter Offizieller",
-      "pt": "Quarto árbitro",
-      "it": "Quarto arbitro",
-      "ja": "第 4 審判員",
-      "ko": "대기심",
-      "id": "Ofisial keempat",
-      "ru": "Четвертый судья"
      }
     }
    ]
