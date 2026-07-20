@@ -38,7 +38,7 @@
 ### 📊 数据统计与预测
 
 - 👟 **金靴榜**及赛事数据统计，在整届比赛期间持续更新
-- 🎲 **比赛概率与赛事预测**：每场比赛都会给出胜/平/负**概率**，由一个在 49,000 场历史国家队比赛上回放训练的 Elo 模型结合官方国际足联排名得出，而**预测**页面让你从现在、揭幕战、某个日期或任意一场比赛编号开始，对整届赛事（小组积分榜、淘汰赛对阵图、加时赛、点球大战）进行 1 到 10,000 次**模拟**，然后不仅展示每支球队的夺冠概率，还提供一张完整的**结果表**：每支球队在小组中的最终排名、被淘汰的轮次以及最终名次，一路推演到捧杯，宛如一台有趣的**预测**机器
+- 🎲 **比赛概率与赛事预测**：每场比赛都会给出胜/平/负**概率**，由一个在 49,000 场历史国家队比赛上回放训练的 Elo 模型结合官方国际足联排名得出，而**预测**页面让你从现在、揭幕战、某个日期或任意一场比赛编号开始，**并使用该时点的球队评分**（因此从揭幕战重演不会带有后见之明），对整届赛事（小组积分榜、淘汰赛对阵图、加时赛、点球大战）进行 1 到 10,000 次**模拟**，然后不仅展示每支球队的夺冠概率，还提供一张完整的**结果表**：每支球队在小组中的最终排名、被淘汰的轮次以及最终名次，一路推演到捧杯，宛如一台有趣的**预测**机器
 
 ### 🌍 语言
 
@@ -63,6 +63,8 @@
 
 ## ⚡ 数据：每场比赛后即时更新
 
+> **决赛已于 2026 年 7 月 19 日结束，数据不再自动更新。** CI 定时调度已停用，`update-data.yml` 仅在手动触发时运行。下文描述的是赛事期间管线的运行方式，以及你自行触发时的行为。
+
 所有数据均来自免费、权威的来源，且全程不使用任何 API 密钥：
 
 | 来源 | 提供内容 |
@@ -76,7 +78,7 @@
 **自动更新**（GitHub Actions，已包含在本仓库中）：
 
 - ⏱️ **比赛进行期间每 15 分钟一次**（外加每场比赛开球前 10 分钟拉取一次阵容）
-- 🌙 **每天纽约时间 00:00**
+- 🌙 **每天一次错峰全量刷新**
 - ✅ 每次更新在发布前都会经过合理性校验，并触发站点重新部署
 
 比分为**半实时，而非实时**：通常比转播信号滞后最多约 15 分钟。这是有意为之；整个应用是由 CI 刷新的静态 JSON，没有服务器、套接字或推送基础设施。
@@ -108,14 +110,15 @@ bun run preview
 | `bun run build` | 类型检查并构建生产版本到 `dist/` |
 | `bun run preview` | 在本地提供已构建的 `dist/` |
 | `bun run update` | 将所有赛事数据（FIFA、维基百科、Open-Meteo）刷新到 `public/data/` |
-| `bun run gencron` | 根据比赛日历重新生成 CI cron 调度计划 |
+| `bun run gencron` | 根据比赛日历重新生成 CI cron 调度计划（已弃用，见「部署」一节） |
 | `bun run genmap` | 从 Natural Earth 源数据重建球场地图 |
 | `bun run typecheck` | TypeScript 类型检查（`tsc -b`，不产出文件） |
 | `bun run format` | Biome 自动格式化（写入） |
 | `bun run lint` | Biome lint + 格式检查（包含无障碍规则） |
 | `bun run smoke` | 无头冒烟测试：覆盖所有语言和主题下的每条路由 |
 | `bun run a11y` | axe-core WCAG A/AA 审计：路由 × 浅色/深色 × RTL |
-| `bun run checkall` | 快速校验：typecheck + format + lint |
+| `bun run test` | Bun 测试运行器：数据管线与预测切点查找的校验 |
+| `bun run checkall` | 快速校验：typecheck + format + lint + test |
 | `bun run checkall:build` | 完整校验：checkall + build + smoke + a11y |
 
 <details>
@@ -135,7 +138,7 @@ bun run preview
 
 1. 推送到仓库。
 2. `deploy.yml` 会在每次推送到 `main` 时构建并发布（仅涉及文档和仅涉及流水线的改动会被跳过）。
-3. `update-data.yml` 会按上述以比赛为驱动的调度刷新数据并重新部署。它的 cron 表是根据固定的比赛日历生成的；如果某场比赛的开球时间发生变化，请运行 `bun run gencron`。
+3. `update-data.yml` 负责刷新数据并重新部署。赛事结束后其定时调度已被注释掉，只能手动触发。若要重新启用，取消 `schedule:` 块的注释，并阅读那里每日 cron 上方的说明：GitHub 会静默丢弃过长 schedule 列表中的条目，因此该工作流按粗网格唤醒，再由 `scripts/cron-guard.mjs` 决定是否继续。
 
 ### 🐳 Docker（自托管）
 
@@ -193,7 +196,10 @@ React 19 · TypeScript · Vite · 无后端，除 React + Router 外无任何运
 
 ```
 scripts/update.mjs    data pipeline (bun run update)
-scripts/gencron.mjs   regenerates the match-driven CI schedule
+scripts/gencron.mjs   regenerates the match-driven CI schedule (unused: see Deploying)
+scripts/simhistory.mjs per-match Elo snapshots for the historical forecast
+scripts/regen-history.mjs  rebuilds those snapshots offline from the cached CSV
+scripts/gen-wc-history.mjs frozen World Cup history & qualification data
 scripts/genmap.mjs    rebuilds the map from Natural Earth data
 scripts/smoke.mjs     headless smoke test across routes, languages, themes
 scripts/curated/      hand-checked datasets

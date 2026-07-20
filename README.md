@@ -38,7 +38,7 @@ README in [français](README.fr.md) · [中文](README.zh.md)
 ### 📊 Stats & predictions
 
 - 👟 **Golden-boot table** and tournament stats, updated throughout the competition
-- 🎲 **Match probabilities & tournament forecast**: every fixture gets a win/draw/loss **probability** from an Elo model replayed over 49,000 historical internationals blended with the official FIFA ranking, and the **forecast** page lets you **simulate** the whole tournament (group tables, knockout bracket, extra time, penalty shoot-outs) 1 to 10,000 times, starting from now, the opening match, a date, or any match number, then shows not just each team's title odds but a full **outcome table**: how every team finishes its group, the round it bows out in, and its final placing, all the way to the trophy, like a fun **prediction** machine
+- 🎲 **Match probabilities & tournament forecast**: every fixture gets a win/draw/loss **probability** from an Elo model replayed over 49,000 historical internationals blended with the official FIFA ranking, and the **forecast** page lets you **simulate** the whole tournament (group tables, knockout bracket, extra time, penalty shoot-outs) 1 to 10,000 times, starting from now, the opening match, a date, or any match number, **using the ratings as they stood at that moment** so replaying from the opener carries no hindsight, then shows not just each team's title odds but a full **outcome table**: how every team finishes its group, the round it bows out in, and its final placing, all the way to the trophy, like a fun **prediction** machine
 
 ### 🌍 Languages
 
@@ -63,6 +63,8 @@ README in [français](README.fr.md) · [中文](README.zh.md)
 
 ## ⚡ Data: fresh after every match
 
+> **The final was played on 19 July 2026, so the data no longer updates automatically.** The CI schedule is disabled; `update-data.yml` runs on manual dispatch only. Everything below describes how the pipeline ran during the tournament, and how it runs if you trigger it yourself.
+
 All data comes from free, authoritative sources, with no API keys anywhere:
 
 | Source | Provides |
@@ -75,8 +77,8 @@ All data comes from free, authoritative sources, with no API keys anywhere:
 
 **Automatic updates** (GitHub Actions, included in this repo):
 
-- ⏱️ **every 15 minutes while matches are being played** (plus a line-ups pull 10 minutes before each kick-off)
-- 🌙 **daily at 00:00 New York time**
+- ⏱️ **every 15 minutes while matches were being played** (plus a line-ups pull 10 minutes before each kick-off)
+- 🌙 **one off-peak full refresh a day**
 - ✅ every update is sanity-checked before publishing and triggers a site redeploy
 
 Scores are **semi-live, not real-time**: they typically trail the broadcast by up to ~15 minutes. This is by design; the whole app is static JSON refreshed by CI, with no servers, sockets or push infrastructure.
@@ -108,14 +110,15 @@ bun run preview
 | `bun run build` | type-check and production build into `dist/` |
 | `bun run preview` | serve the built `dist/` locally |
 | `bun run update` | refresh all tournament data (FIFA, Wikipedia, Open-Meteo) into `public/data/` |
-| `bun run gencron` | regenerate the CI cron schedule from the match calendar |
+| `bun run gencron` | regenerate the CI cron schedule from the match calendar (unused, see Deploying) |
 | `bun run genmap` | rebuild the venues map from Natural Earth source data |
 | `bun run typecheck` | TypeScript type check (`tsc -b`, no emit) |
 | `bun run format` | Biome auto-format (writes) |
 | `bun run lint` | Biome lint + format check (includes a11y rules) |
 | `bun run smoke` | headless smoke test: every route across languages and themes |
 | `bun run a11y` | axe-core WCAG A/AA audit: routes × light/dark × RTL |
-| `bun run checkall` | quick gate: typecheck + format + lint |
+| `bun run test` | Bun test runner: data-pipeline and forecast-lookup checks |
+| `bun run checkall` | quick gate: typecheck + format + lint + test |
 | `bun run checkall:build` | full gate: checkall + build + smoke + a11y |
 
 <details>
@@ -135,7 +138,7 @@ The app is a static site with hash routing and relative asset paths. For GitHub 
 
 1. Push to the repository.
 2. `deploy.yml` builds and publishes on every push to `main` (documentation-only and pipeline-only changes are skipped).
-3. `update-data.yml` refreshes the data on the match-driven schedule above and redeploys. Its cron table is generated from the fixed match calendar; run `bun run gencron` if a kick-off time ever changes.
+3. `update-data.yml` refreshes the data and redeploys. Its schedule is commented out now that the tournament is over, so it runs only when dispatched manually. Re-enabling it means uncommenting the `schedule:` block and reading the note above the daily cron there: the workflow wakes on a coarse grid and `scripts/cron-guard.mjs` decides whether to proceed, because GitHub silently drops entries from long schedule lists.
 
 ### 🐳 Docker (self-hosting)
 
@@ -193,7 +196,10 @@ React 19 · TypeScript · Vite · no backend, no runtime dependencies beyond Rea
 
 ```
 scripts/update.mjs    data pipeline (bun run update)
-scripts/gencron.mjs   regenerates the match-driven CI schedule
+scripts/gencron.mjs   regenerates the match-driven CI schedule (unused: see Deploying)
+scripts/simhistory.mjs per-match Elo snapshots for the historical forecast
+scripts/regen-history.mjs  rebuilds those snapshots offline from the cached CSV
+scripts/gen-wc-history.mjs frozen World Cup history & qualification data
 scripts/genmap.mjs    rebuilds the map from Natural Earth data
 scripts/smoke.mjs     headless smoke test across routes, languages, themes
 scripts/curated/      hand-checked datasets

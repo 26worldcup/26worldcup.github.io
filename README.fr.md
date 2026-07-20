@@ -38,7 +38,7 @@ README en [English](README.md) · [中文](README.zh.md)
 ### 📊 Statistiques et pronostics
 
 - 👟 **Classement des buteurs (Soulier d'or)** et statistiques du tournoi, mis à jour tout au long de la compétition
-- 🎲 **Probabilités des matchs et prévisions du tournoi** : chaque rencontre reçoit une **probabilité** de victoire/nul/défaite issue d'un modèle Elo rejoué sur 49 000 matchs internationaux historiques, combiné au classement officiel de la FIFA, et la page de **prévisions** vous permet de **simuler** l'ensemble du tournoi (classements des groupes, tableau à élimination directe, prolongations, séances de tirs au but) de 1 à 10 000 fois, en partant de maintenant, du match d'ouverture, d'une date ou d'un numéro de match quelconque, puis affiche non seulement les chances de titre de chaque équipe mais aussi un **tableau de résultats** complet : comment chaque équipe termine son groupe, le tour où elle est éliminée et son classement final, jusqu'au trophée, comme une amusante machine à **pronostics**
+- 🎲 **Probabilités des matchs et prévisions du tournoi** : chaque rencontre reçoit une **probabilité** de victoire/nul/défaite issue d'un modèle Elo rejoué sur 49 000 matchs internationaux historiques, combiné au classement officiel de la FIFA, et la page de **prévisions** vous permet de **simuler** l'ensemble du tournoi (classements des groupes, tableau à élimination directe, prolongations, séances de tirs au but) de 1 à 10 000 fois, en partant de maintenant, du match d'ouverture, d'une date ou d'un numéro de match quelconque, **avec les cotes telles qu'elles étaient à cet instant**, de sorte qu'un rejeu depuis le match d'ouverture ne bénéficie d'aucun recul, puis affiche non seulement les chances de titre de chaque équipe mais aussi un **tableau de résultats** complet : comment chaque équipe termine son groupe, le tour où elle est éliminée et son classement final, jusqu'au trophée, comme une amusante machine à **pronostics**
 
 ### 🌍 Langues
 
@@ -63,6 +63,8 @@ README en [English](README.md) · [中文](README.zh.md)
 
 ## ⚡ Données : fraîches après chaque match
 
+> **La finale a eu lieu le 19 juillet 2026, les données ne se mettent donc plus à jour automatiquement.** Le planning de la CI est désactivé ; `update-data.yml` ne s'exécute plus que sur déclenchement manuel. Ce qui suit décrit le fonctionnement du pipeline pendant le tournoi, et son comportement si vous le déclenchez vous-même.
+
 Toutes les données proviennent de sources libres et faisant autorité, sans aucune clé d'API où que ce soit :
 
 | Source | Fournit |
@@ -76,7 +78,7 @@ Toutes les données proviennent de sources libres et faisant autorité, sans auc
 **Mises à jour automatiques** (GitHub Actions, incluses dans ce dépôt) :
 
 - ⏱️ **toutes les 15 minutes pendant que des matchs se jouent** (plus une récupération des compositions 10 minutes avant chaque coup d'envoi)
-- 🌙 **chaque jour à 00h00, heure de New York**
+- 🌙 **une actualisation complète par jour, en heures creuses**
 - ✅ chaque mise à jour est vérifiée pour cohérence avant publication et déclenche un redéploiement du site
 
 Les scores sont **semi-en-direct, pas en temps réel** : ils accusent généralement un retard pouvant atteindre ~15 minutes par rapport à la diffusion. C'est voulu ; l'application entière est du JSON statique actualisé par la CI, sans serveurs, sockets ni infrastructure de notifications push.
@@ -108,14 +110,15 @@ bun run preview
 | `bun run build` | vérification des types et build de production dans `dist/` |
 | `bun run preview` | sert localement le `dist/` compilé |
 | `bun run update` | actualise toutes les données du tournoi (FIFA, Wikipédia, Open-Meteo) dans `public/data/` |
-| `bun run gencron` | régénère le planning cron de la CI à partir du calendrier des matchs |
+| `bun run gencron` | régénère le planning cron de la CI à partir du calendrier des matchs (inutilisé, voir Déploiement) |
 | `bun run genmap` | reconstruit la carte des stades à partir des données source Natural Earth |
 | `bun run typecheck` | vérification des types TypeScript (`tsc -b`, sans émission) |
 | `bun run format` | formatage automatique Biome (écriture) |
 | `bun run lint` | lint Biome + vérification du formatage (inclut les règles d'accessibilité) |
 | `bun run smoke` | test de fumée sans interface : chaque route à travers les langues et les thèmes |
 | `bun run a11y` | audit WCAG A/AA avec axe-core : routes × clair/sombre × RTL |
-| `bun run checkall` | passage rapide : typecheck + format + lint |
+| `bun run test` | lanceur de tests Bun : pipeline de données et recherche de point de coupe |
+| `bun run checkall` | passage rapide : typecheck + format + lint + test |
 | `bun run checkall:build` | passage complet : checkall + build + smoke + a11y |
 
 <details>
@@ -135,7 +138,7 @@ L'application est un site statique avec routage par hash et chemins d'actifs rel
 
 1. Poussez vers le dépôt.
 2. `deploy.yml` compile et publie à chaque push vers `main` (les changements purement documentaires et purement liés au pipeline sont ignorés).
-3. `update-data.yml` actualise les données selon le planning dicté par les matchs ci-dessus et redéploie. Sa table cron est générée à partir du calendrier fixe des matchs ; exécutez `bun run gencron` si une heure de coup d'envoi venait à changer.
+3. `update-data.yml` actualise les données et redéploie. Son planning est commenté maintenant que le tournoi est terminé : il ne s'exécute plus que sur déclenchement manuel. Pour le réactiver, décommentez le bloc `schedule:` et lisez la note placée au-dessus du cron quotidien : GitHub supprime silencieusement des entrées des listes de planning trop longues, aussi le workflow se réveille sur une grille grossière et `scripts/cron-guard.mjs` décide s'il faut poursuivre.
 
 ### 🐳 Docker (auto-hébergement)
 
@@ -193,7 +196,10 @@ React 19 · TypeScript · Vite · pas de backend, aucune dépendance à l'exécu
 
 ```
 scripts/update.mjs    data pipeline (bun run update)
-scripts/gencron.mjs   regenerates the match-driven CI schedule
+scripts/gencron.mjs   regenerates the match-driven CI schedule (unused: see Deploying)
+scripts/simhistory.mjs per-match Elo snapshots for the historical forecast
+scripts/regen-history.mjs  rebuilds those snapshots offline from the cached CSV
+scripts/gen-wc-history.mjs frozen World Cup history & qualification data
 scripts/genmap.mjs    rebuilds the map from Natural Earth data
 scripts/smoke.mjs     headless smoke test across routes, languages, themes
 scripts/curated/      hand-checked datasets
