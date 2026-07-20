@@ -266,7 +266,7 @@ const de: Dict = {
   removeFavorite: 'Aus meinen Teams entfernen',
   // venues
   venuesTitle: 'Stadien',
-  venuesSub: '16 Stadien in 3 Gastgeberländern',
+  venueCounts: '{m} Spiele, {s} Stadien',
   roofOpen: 'Ohne Dach',
   roofCanopy: 'Tribünendach',
   roofRetractable: 'Schließbares Dach',

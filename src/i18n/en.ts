@@ -297,7 +297,7 @@ const en: Dict = {
   entSovietUnion: 'Soviet Union',
   // venues
   venuesTitle: 'Venues',
-  venuesSub: '16 stadiums across 3 host countries',
+  venueCounts: '{m} matches, {s} stadiums',
   roofOpen: 'Open-air',
   roofCanopy: 'Canopy roof',
   roofRetractable: 'Retractable roof',

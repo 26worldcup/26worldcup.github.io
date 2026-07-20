@@ -262,7 +262,7 @@ const tr: Dict = {
   removeFavorite: 'Takımlarımdan çıkar',
   // venues
   venuesTitle: 'Statlar',
-  venuesSub: '3 ev sahibi ülkede 16 stadyum',
+  venueCounts: '{m} maç, {s} stat',
   roofOpen: 'Açık hava',
   roofCanopy: 'Tribün çatısı',
   roofRetractable: 'Açılır kapanır çatı',

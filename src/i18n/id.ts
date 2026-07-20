@@ -264,7 +264,7 @@ const id: Dict = {
   removeFavorite: 'Hapus dari tim saya',
   // venues
   venuesTitle: 'Stadion',
-  venuesSub: '16 stadion di 3 negara tuan rumah',
+  venueCounts: '{m} pertandingan, {s} stadion',
   roofOpen: 'Terbuka',
   roofCanopy: 'Atap kanopi',
   roofRetractable: 'Atap buka-tutup',

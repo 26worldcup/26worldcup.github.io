@@ -267,7 +267,7 @@ const pt: Dict = {
   removeFavorite: 'Remover das minhas seleções',
   // venues
   venuesTitle: 'Estádios',
-  venuesSub: '16 estádios em 3 países anfitriões',
+  venueCounts: '{m} jogos, {s} estádios',
   roofOpen: 'A céu aberto',
   roofCanopy: 'Cobertura parcial',
   roofRetractable: 'Cobertura retrátil',

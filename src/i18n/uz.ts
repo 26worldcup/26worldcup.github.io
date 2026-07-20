@@ -265,7 +265,7 @@ const uz: Dict = {
   removeFavorite: 'Jamoalarimdan olib tashlash',
   // venues
   venuesTitle: 'Stadionlar',
-  venuesSub: '3 mezbon mamlakatdagi 16 ta stadion',
+  venueCounts: "{m} ta o'yin, {s} ta stadion",
   roofOpen: 'Usti ochiq',
   roofCanopy: 'Soyabonli tom',
   roofRetractable: 'Ochilib-yopiladigan tom',

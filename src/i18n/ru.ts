@@ -267,7 +267,7 @@ const ru: Dict = {
   removeFavorite: 'Убрать из моих сборных',
   // venues
   venuesTitle: 'Стадионы',
-  venuesSub: '16 стадионов в 3 странах-хозяйках',
+  venueCounts: 'Матчей: {m}, стадионов: {s}',
   roofOpen: 'Открытый',
   roofCanopy: 'Козырёк над трибунами',
   roofRetractable: 'Раздвижная крыша',

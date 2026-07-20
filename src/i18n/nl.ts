@@ -266,7 +266,7 @@ const nl: Dict = {
   removeFavorite: 'Verwijderen uit mijn teams',
   // venues
   venuesTitle: 'Stadions',
-  venuesSub: '16 stadions in 3 gastlanden',
+  venueCounts: '{m} wedstrijden, {s} stadions',
   roofOpen: 'Openlucht',
   roofCanopy: 'Overkapte tribunes',
   roofRetractable: 'Schuifdak',

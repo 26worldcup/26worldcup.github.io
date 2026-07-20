@@ -262,7 +262,7 @@ const fa: Dict = {
   removeFavorite: 'حذف از تیم‌های من',
   // venues
   venuesTitle: 'ورزشگاه‌ها',
-  venuesSub: '16 ورزشگاه در 3 کشور میزبان',
+  venueCounts: '{m} بازی، {s} ورزشگاه',
   roofOpen: 'روباز',
   roofCanopy: 'سایبان‌دار',
   roofRetractable: 'سقف متحرک',

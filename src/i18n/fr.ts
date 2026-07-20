@@ -266,7 +266,7 @@ const fr: Dict = {
   removeFavorite: 'Retirer de mes équipes',
   // venues
   venuesTitle: 'Stades',
-  venuesSub: '16 stades dans 3 pays hôtes',
+  venueCounts: '{m} matchs, {s} stades',
   roofOpen: 'À ciel ouvert',
   roofCanopy: 'Auvent',
   roofRetractable: 'Toit rétractable',

@@ -265,7 +265,7 @@ const hr: Dict = {
   removeFavorite: 'Ukloni iz mojih momčadi',
   // venues
   venuesTitle: 'Stadioni',
-  venuesSub: '16 stadiona u 3 zemlje domaćina',
+  venueCounts: '{m} utakmica, {s} stadiona',
   roofOpen: 'Na otvorenom',
   roofCanopy: 'Natkrivene tribine',
   roofRetractable: 'Pomični krov',

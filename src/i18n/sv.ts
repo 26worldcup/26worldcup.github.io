@@ -264,7 +264,7 @@ const sv: Dict = {
   removeFavorite: 'Ta bort från mina lag',
   // venues
   venuesTitle: 'Arenor',
-  venuesSub: '16 arenor i 3 värdländer',
+  venueCounts: '{m} matcher, {s} arenor',
   roofOpen: 'Utan tak',
   roofCanopy: 'Läktartak',
   roofRetractable: 'Skjutbart tak',

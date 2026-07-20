@@ -273,7 +273,7 @@ const ar: Dict = {
   removeFavorite: 'أزِل من منتخباتي',
   // venues
   venuesTitle: 'الملاعب',
-  venuesSub: '16 ملعبًا في 3 دول مستضيفة',
+  venueCounts: 'المباريات: {m}، الملاعب: {s}',
   roofOpen: 'مكشوف',
   roofCanopy: 'مظلة',
   roofRetractable: 'سقف متحرك',

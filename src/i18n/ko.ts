@@ -261,7 +261,7 @@ const ko: Dict = {
   removeFavorite: '내 팀에서 제거',
   // venues
   venuesTitle: '경기장',
-  venuesSub: '3개 개최국, 16개 경기장',
+  venueCounts: '{m}경기, {s}개 경기장',
   roofOpen: '개방형',
   roofCanopy: '캐노피 지붕',
   roofRetractable: '개폐식 지붕',

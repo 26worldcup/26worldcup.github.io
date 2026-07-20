@@ -264,7 +264,7 @@ const no: Dict = {
   removeFavorite: 'Fjern fra mine lag',
   // venues
   venuesTitle: 'Stadioner',
-  venuesSub: '16 stadioner i 3 vertsland',
+  venueCounts: '{m} kamper, {s} stadioner',
   roofOpen: 'Utendørs',
   roofCanopy: 'Tak over tribunene',
   roofRetractable: 'Skyvetak',

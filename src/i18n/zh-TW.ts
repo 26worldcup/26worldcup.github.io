@@ -260,7 +260,7 @@ const zhTW: Dict = {
   removeFavorite: '從我的最愛移除',
   // venues
   venuesTitle: '比賽場館',
-  venuesSub: '3個主辦國的16座球場',
+  venueCounts: '{m}場比賽，{s}座場館',
   roofOpen: '露天',
   roofCanopy: '頂篷',
   roofRetractable: '可開合式屋頂',

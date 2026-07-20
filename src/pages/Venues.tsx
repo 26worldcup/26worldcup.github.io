@@ -222,7 +222,6 @@ function TeamDropdown({
 
 function VenueMap({
   venues,
-  counts,
   camps,
   selTeam,
   selVenueIds,
@@ -233,7 +232,6 @@ function VenueMap({
   onCountry,
 }: {
   venues: Venue[]
-  counts: Record<HostCountry, number>
   camps: Team[]
   selTeam: string | null
   selVenueIds: ReadonlySet<string>
@@ -345,7 +343,7 @@ function VenueMap({
           className="vn-svg"
           viewBox={crop ? crop.join(' ') : `0 0 ${MAP_W} ${MAP_H}`}
           role="group"
-          aria-label={t('venuesSub')}
+          aria-label={t('venuesTitle')}
         >
           <path className="vn-ctx" d={naMap.context} />
           {COUNTRIES.map((c) => (
@@ -428,7 +426,6 @@ function VenueMap({
           <button key={c} type="button" className="vn-leg" onClick={() => onCountry(c)}>
             <span className="vn-dot" style={{ background: COUNTRY_COLOR[c] }} aria-hidden="true" />
             <strong>{t(HOST_KEY[c])}</strong>
-            <span className="muted small tnum">{t('matchesShown', { n: counts[c] })}</span>
           </button>
         ))}
         <button
@@ -703,13 +700,11 @@ export default function Venues() {
     <div className="vn-page">
       <div className="page-head">
         <h1>{t('venuesTitle')}</h1>
-        <p>{t('venuesSub')}</p>
       </div>
 
       <div ref={mapRef} className="vn-map-anchor">
         <VenueMap
           venues={venueList}
-          counts={counts}
           camps={camps}
           selTeam={selTeam}
           selVenueIds={selVenueIds}
@@ -726,7 +721,9 @@ export default function Venues() {
           <div className="section-title">
             <Flag iso2={country} size={26} alt={t(HOST_KEY[country])} />
             <h2>{t(HOST_KEY[country])}</h2>
-            <span className="muted small tnum">{t('matchesShown', { n: counts[country] })}</span>
+            <span className="muted small tnum">
+              {t('venueCounts', { m: counts[country], s: venues.length })}
+            </span>
           </div>
           <div className="cards-grid three">
             {venues.map((v) => (

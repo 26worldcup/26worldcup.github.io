@@ -262,7 +262,7 @@ const ja: Dict = {
   removeFavorite: 'マイチームから削除',
   // venues
   venuesTitle: 'スタジアム',
-  venuesSub: '開催3カ国・16スタジアム',
+  venueCounts: '{m}試合、{s}スタジアム',
   roofOpen: '屋根なし',
   roofCanopy: 'キャノピー屋根',
   roofRetractable: '開閉式屋根',

@@ -266,7 +266,7 @@ const cs: Dict = {
   removeFavorite: 'Odebrat z mých týmů',
   // venues
   venuesTitle: 'Stadiony',
-  venuesSub: '16 stadionů ve 3 pořadatelských zemích',
+  venueCounts: 'Zápasů: {m}, stadionů: {s}',
   roofOpen: 'Bez střechy',
   roofCanopy: 'Střecha nad tribunami',
   roofRetractable: 'Zatahovací střecha',

@@ -260,7 +260,7 @@ const zh: Dict = {
   removeFavorite: '移出我的球队',
   // venues
   venuesTitle: '比赛场馆',
-  venuesSub: '3个主办国的16座球场',
+  venueCounts: '{m}场比赛，{s}座场馆',
   roofOpen: '露天',
   roofCanopy: '顶棚',
   roofRetractable: '可开合屋顶',
