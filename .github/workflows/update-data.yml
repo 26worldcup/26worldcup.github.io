@@ -1,19 +1,31 @@
-# Daily data refresh: fetches the latest matches/results/lineups/weather,
-# commits the JSON, then redeploys GitHub Pages with the fresh data.
+# Data refresh: fetches the latest matches/results/lineups/weather, commits the
+# JSON, then redeploys GitHub Pages with the fresh data.
 # (Bot pushes made with GITHUB_TOKEN do not trigger deploy.yml, so this
 # workflow carries its own deploy job.)
+#
+# Manual only since the 2026-07-19 final. The schedule below is kept for the
+# record and for any future tournament; re-enabling it needs one fix, see the
+# note on the daily cron.
 name: Update World Cup data
 
 on:
-  schedule:
-    # Coarse grid + in-job gate (scripts/cron-guard.mjs). The previous
-    # 142-entry generated table proved unreliable: GitHub's scheduler drops
-    # entries from very long schedule lists, so all of June 11's match-window
-    # crons silently never fired. Now the workflow wakes every 15 minutes
-    # during the tournament and the guard decides in ~5s whether to proceed.
-    - cron: '23 4 * * *' # daily full refresh (off-peak minute)
-    - cron: '7,22,37,52 * 11-30 6 *' # June 11-30: 15-min grid, off-peak minutes (gated)
-    - cron: '7,22,37,52 * 1-19 7 *' # July 1-19: 15-min grid, off-peak minutes (gated)
+  # schedule:
+  #   Coarse grid + in-job gate (scripts/cron-guard.mjs). The previous
+  #   142-entry generated table proved unreliable: GitHub's scheduler drops
+  #   entries from very long schedule lists, so all of June 11's match-window
+  #   crons silently never fired. Instead the workflow wakes every 15 minutes
+  #   during the tournament and the guard decides in ~5s whether to proceed.
+  #
+  #   BUG, fix before re-enabling: the daily cron below fires at 04:23, but
+  #   cron-guard.mjs only reports daily=true between 04:00 and 04:14 UTC, and
+  #   GitHub only ever fires a cron late, never early. So this entry never
+  #   passed the gate on its own. Through the tournament the daily refresh
+  #   actually rode on the 15-minute grid, whose :07 slot lands inside the
+  #   window. Once the grid's date ranges expired the refresh stopped
+  #   entirely. Use '7 4 * * *', or widen the window in the guard.
+  #   - cron: '23 4 * * *' # daily full refresh (off-peak minute)
+  #   - cron: '7,22,37,52 * 11-30 6 *' # June 11-30: 15-min grid, off-peak minutes (gated)
+  #   - cron: '7,22,37,52 * 1-19 7 *' # July 1-19: 15-min grid, off-peak minutes (gated)
   workflow_dispatch:
     inputs:
       relay:
