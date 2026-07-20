@@ -2,9 +2,12 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Match } from '../types'
 import { useI18n } from '../i18n'
+import { useSettings } from '../settings/SettingsContext'
 import { useAppData, useData } from '../data/DataContext'
+import { displayTz, fmtDateTime, tzAbbr } from '../utils/time'
 import { runTournament } from '../sim/engine'
 import type { Outcome, SimRun, SimScore } from '../sim/engine'
+import { cutAt, dayCutoffMs, modelAt } from '../sim/history'
 import Flag from '../components/Flag'
 import Trophy from '../components/Trophy'
 import Icon from '../components/Icon'
@@ -45,9 +48,10 @@ const localDay = (iso: string): string => {
 }
 
 export default function Forecast() {
-  const { t, pick } = useI18n()
+  const { t, pick, locale } = useI18n()
+  const { settings } = useSettings()
   const { matches, teams, venues } = useAppData()
-  const { simModel, loadSimModel } = useData()
+  const { simModel, loadSimModel, simHistory, loadSimHistory } = useData()
   useEffect(() => {
     loadSimModel()
   })
@@ -63,6 +67,9 @@ export default function Forecast() {
 
   // ---- "simulate from" cut point ----
   const [simMode, setSimMode] = useState<SimMode>(finalDone ? 'opener' : 'now')
+  useEffect(() => {
+    if (simMode !== 'now') loadSimHistory()
+  }, [simMode, loadSimHistory])
   const { minDate, maxDate } = useMemo(() => {
     const days = matches.map((m) => localDay(m.date)).sort()
     const first = days[0] ?? '2026-06-11'
@@ -89,29 +96,51 @@ export default function Forecast() {
     return upcoming.length ? Math.min(...upcoming) : 1
   })
 
-  // a predicate per match: keep its real finished result, or (re)simulate it
-  const keepReal = useMemo<(m: Match) => boolean>(() => {
-    if (simMode === 'opener') return () => false
+  // one cut instant drives everything: which matches keep their real result AND
+  // which rating snapshot the model comes from. Deriving both from the same value
+  // is what makes "simulate from match N" equal "run Now just before N kicked off".
+  // match numbers are NOT in kickoff order, so the cut is always a kickoff time.
+  const cutoffMs = useMemo(() => {
+    if (simMode === 'opener') return Number.NEGATIVE_INFINITY
     if (simMode === 'match') {
-      // match numbers are NOT in kickoff order (a lower number can start at the same
-      // time or later), so cut by the picked match's kickoff time: keep real only the
-      // matches that kicked off strictly earlier; (re)simulate the picked match, anything
-      // kicking off at the same time, and everything after. earlier matches with no real
-      // result yet (live/unplayed) still get simulated via the engine's finished-guard.
       const sel = matches.find((m) => m.n === cutMatch)
-      if (!sel) return (m) => m.n < cutMatch
-      const cutoff = Date.parse(sel.date)
-      return (m) => Date.parse(m.date) < cutoff
+      return sel ? Date.parse(sel.date) : Number.NEGATIVE_INFINITY
     }
-    if (simMode === 'date') {
-      // same kickoff-time logic, inclusive of the picked day: the day and everything
-      // after it (local time) is (re)simulated; only matches that kicked off before that
-      // day's local midnight keep their real result.
-      const cutoff = new Date(`${cutDate}T00:00:00`).getTime()
-      return (m) => Date.parse(m.date) < cutoff
-    }
-    return () => true // 'now' — keep every finished match, simulate the rest
+    if (simMode === 'date') return dayCutoffMs(cutDate)
+    return Number.POSITIVE_INFINITY // 'now': keep every finished match
   }, [simMode, cutDate, cutMatch, matches])
+
+  // matches that kicked off strictly earlier keep their real result; the picked
+  // match, anything kicking off at the same instant, and everything after get
+  // (re)simulated. Earlier matches with no real result yet still go through the
+  // engine's finished-guard.
+  const keepReal = useMemo<(m: Match) => boolean>(() => (m) => Date.parse(m.date) < cutoffMs, [cutoffMs])
+
+  // 'now' uses the live model; every other cut point uses the snapshot of that
+  // instant, so the forecast shows what was known then instead of today's hindsight.
+  // null while the history file is still loading: running with simModel there would
+  // silently label today's ratings as historical.
+  const activeModel = useMemo(
+    () => (simMode === 'now' ? simModel : simHistory ? modelAt(simHistory, cutoffMs) : null),
+    [simMode, simHistory, simModel, cutoffMs],
+  )
+
+  // the kickoff the snapshot stops at, for the caption. Shares cutAt with
+  // activeModel so the caption can never name a different cut than the one in use.
+  // Formatted through the app's own locale and timezone settings, and stamped with
+  // the zone abbreviation: an instant with no zone on it invites misreading.
+  const asOfLabel = useMemo(() => {
+    if (!simHistory) return null
+    const cut = cutAt(simHistory, cutoffMs)
+    // no kickoff means the pre-tournament baseline. Return null so the caption can
+    // pick a standalone phrase: substituting a word into the "as of {d}" slot, which
+    // every translation wrote around a date, produces broken grammar (fr: "au Ouverture").
+    if (!cut.after) return null
+    const at = cut.after
+    const venue = matches.find((m) => m.date === at && m.venueId)?.venueId
+    const tz = displayTz(settings, venue ? venues[venue] : null)
+    return `${fmtDateTime(at, locale, tz)} (${tzAbbr(at, locale, tz)})`
+  }, [simHistory, cutoffMs, locale, settings, matches, venues])
 
   // slider uses a piecewise-log scale: 1/4 travel -> 100, midpoint -> 1000, end -> 10000
   const posToRuns = (p: number) =>
@@ -126,6 +155,15 @@ export default function Forecast() {
   const [stats, setStats] = useState<FcRow[] | null>(null)
   const [ranToCount, setRanToCount] = useState(0)
   const [progress, setProgress] = useState<number | null>(null)
+
+  // a cut change must not leave a stale result sitting under a caption that now
+  // describes a different cut, so clear both until a run against the new cutoffMs
+  // completes (MatchSimulator's setResult(null) handles the equivalent case)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: cutoffMs is the change signal, not read in the body
+  useEffect(() => {
+    setStats(null)
+    setLast(null)
+  }, [cutoffMs])
 
   // wheel over the runs input nudges the value by 1 instead of scrolling the page
   // (native non-passive listener: React's onWheel can't preventDefault reliably)
@@ -156,7 +194,7 @@ export default function Forecast() {
   }, [])
 
   const run = async () => {
-    if (!simModel || progress !== null) return
+    if (!activeModel || progress !== null) return
     const n = Math.min(Math.max(runs, 1), 10000)
     const keep = keepReal
     // per team: [g1,g2,g3,g4, group,r32,r16,qf, 4th,3rd,ru,champ]
@@ -175,7 +213,7 @@ export default function Forecast() {
     for (let done = 0; done < n; done += BATCH) {
       const upto = Math.min(done + BATCH, n)
       for (let i = done; i < upto; i++) {
-        lastRun = runTournament(simModel, matches, venues, teams, keep)
+        lastRun = runTournament(activeModel, matches, venues, teams, keep)
         for (const rows of Object.values(lastRun.groupTables)) {
           for (let p = 0; p < rows.length && p < 4; p++) bump(rows[p].code, p)
         }
@@ -217,11 +255,11 @@ export default function Forecast() {
   const runRef = useRef(run)
   runRef.current = run
   useEffect(() => {
-    if (simModel && !autoRan.current) {
+    if (activeModel && !autoRan.current) {
       autoRan.current = true
       runRef.current()
     }
-  }, [simModel])
+  }, [activeModel])
 
   // "Now" radio: first by default, but disabled and moved last once the final is done
   const nowRadio = (
@@ -317,6 +355,20 @@ export default function Forecast() {
               <InfoDot text={t('simMatchTip')} />
             </div>
             {finalDone && nowRadio}
+            <div className="muted small sim-asof">
+              <span className="sim-asof-label">
+                {t('aimsRatings')}
+                {t('colon')}
+              </span>
+              <span className="sim-asof-value">
+                {simMode === 'now'
+                  ? t('aimsRatingsLatest')
+                  : !simHistory
+                    ? t('loading')
+                    : (asOfLabel ?? t('aimsRatingsPre'))}
+              </span>
+              <InfoDot text={t('simRatingsTip')} />
+            </div>
           </div>
         )}
         <div className="sim-runs">
@@ -344,7 +396,7 @@ export default function Forecast() {
           type="button"
           className="btn btn-primary"
           onClick={run}
-          disabled={!simModel || progress !== null}
+          disabled={!activeModel || progress !== null}
         >
           <Icon name="target" size={16} />
           {progress !== null ? (
@@ -355,7 +407,6 @@ export default function Forecast() {
             t('simRunBtn')
           )}
         </button>
-        <p className="muted small sim-note">{t('probNote')}</p>
       </div>
 
       {stats && (

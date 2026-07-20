@@ -35,11 +35,6 @@
   flex: none;
   text-align: center;
 }
-.sim-note {
-  flex-basis: 100%;
-  margin: 0;
-}
-
 .sim-champ {
   margin-top: 14px;
 }
@@ -242,6 +237,22 @@
   gap: 8px 16px;
   flex-basis: 100%;
 }
+/* which rating snapshot is in force, sitting at the end of the cut-point row.
+   The spans must stay inline: the separator lives inside t('colon') (': ' in
+   English, '：' with no space in Chinese), and a flex item would trim that
+   trailing space away. */
+.sim-asof {
+  white-space: nowrap;
+}
+/* match the 6px the .sim-radio flex gap puts before its own InfoDot. This one
+   cannot use gap: .sim-asof must stay non-flex so the trailing space inside
+   t('colon') survives. */
+.sim-asof .infodot {
+  margin-inline-start: 6px;
+}
+.sim-asof-value {
+  font-variant-numeric: tabular-nums;
+}
 .sim-from-label {
   font-weight: 750;
   font-size: 0.78rem;
@@ -297,6 +308,9 @@ input.sim-matchno {
   transform: translateX(-50%);
   width: max-content;
   max-width: 240px;
+  /* immune to the surrounding context: a parent with nowrap would otherwise make
+     max-content resolve to the whole string on one line, then clip it at max-width */
+  white-space: normal;
   padding: 7px 10px;
   border-radius: var(--r-sm);
   background: var(--text);
@@ -325,13 +339,15 @@ input.sim-matchno {
   gap: 8px 10px;
   margin-bottom: 10px;
 }
-.fc-search {
-  flex: 1;
+/* both must out-rank the generic .input width, which is 100% and would otherwise
+   push each control onto its own row */
+.fc-controls input.fc-search {
+  flex: 1 1 200px;
   min-width: 140px;
-  max-width: 280px;
 }
-.fc-grp {
-  flex: none;
+.fc-controls select.fc-grp {
+  flex: 0 0 auto;
+  width: auto;
 }
 .fc-scroll {
   overflow-x: auto;

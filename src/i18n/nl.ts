@@ -193,6 +193,8 @@ const nl: Dict = {
   simDateTip: 'Simuleer elke wedstrijd vanaf deze datum (inclusief deze datum) (jouw lokale tijd).',
   simMatch: 'Wedstrijd',
   simMatchTip: 'Simuleer elke wedstrijd vanaf dit wedstrijdnummer (inclusief deze wedstrijd).',
+  simRatingsTip:
+    'Elo-rating voor teamsterkte. Elke interland verandert hem, dus hij hoort altijd bij één bepaald moment. Samen met FIFA-ranglijstpunten bepaalt hij alle kansen op deze pagina.',
   fcTitle: 'Uitkomstkansen ({n} simulaties)',
   fcSearch: 'Teams zoeken',
   fcAllGroups: 'Alle groepen',
@@ -408,6 +410,9 @@ const nl: Dict = {
   aimsNeutral: 'Neutraal',
   aimsGoal: 'GOOOAL!',
   aimsKnockout: 'Knock-out (verlenging + strafschoppen)',
+  aimsRatings: 'Ratings',
+  aimsRatingsLatest: 'Huidig',
+  aimsRatingsPre: 'Voor het toernooi',
 }
 
 export default nl

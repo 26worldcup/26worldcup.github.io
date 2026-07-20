@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useRef, useState, useMemo } from 
 import type { ReactNode } from 'react'
 import type { AppData, Squads, WcHistory } from '../types'
 import type { SimModel } from '../sim/engine'
+import type { SimHistory } from '../sim/history'
 import { withResolvedSides } from '../utils/bracketResolve'
 
 interface DataCtx {
@@ -12,6 +13,9 @@ interface DataCtx {
   loadSquads: () => void
   simModel: SimModel | null
   loadSimModel: () => void
+  /** per-cut-point rating snapshots, loaded only when a time selector is used */
+  simHistory: SimHistory | null
+  loadSimHistory: () => void
   /** frozen World Cup history + qualification, loaded lazily on first use */
   wcHistory: WcHistory | null
   loadWcHistory: () => void
@@ -48,8 +52,10 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null)
   const [squads, setSquads] = useState<Squads | null>(null)
   const [simModel, setSimModel] = useState<SimModel | null>(null)
+  const [simHistory, setSimHistory] = useState<SimHistory | null>(null)
   const [wcHistory, setWcHistory] = useState<WcHistory | null>(null)
   const simRequested = useRef(false)
+  const simHistoryRequested = useRef(false)
   const squadsRequested = useRef(false)
   const wcHistoryRequested = useRef(false)
   const dataRef = useRef<AppData | null>(null)
@@ -185,6 +191,17 @@ export function DataProvider({ children }: { children: ReactNode }) {
       })
   }
 
+  const loadSimHistory = () => {
+    if (simHistoryRequested.current) return
+    simHistoryRequested.current = true
+    getJson<SimHistory>('sim-model-history.json')
+      .then(setSimHistory)
+      .catch(() => {
+        // transient failure: let a later interaction retry
+        simHistoryRequested.current = false
+      })
+  }
+
   const loadWcHistory = () => {
     if (wcHistoryRequested.current) return
     wcHistoryRequested.current = true
@@ -212,6 +229,8 @@ export function DataProvider({ children }: { children: ReactNode }) {
         loadSquads,
         simModel,
         loadSimModel,
+        simHistory,
+        loadSimHistory,
         wcHistory,
         loadWcHistory,
       }}

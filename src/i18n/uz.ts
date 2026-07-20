@@ -193,6 +193,8 @@ const uz: Dict = {
   simMatch: "O'yin",
   simMatchTip:
     "Shu o'yin raqamidan boshlab har bir o'yinni simulyatsiya qiladi (shu o'yinni ham qo'shgan holda).",
+  simRatingsTip:
+    "Elo jamoa kuchini ko'rsatadigan reytingdir. Har bir terma jamoalar o'yini uni o'zgartiradi, shuning uchun u doim ma'lum bir lahzaga tegishli bo'ladi. FIFA reytingi ballari bilan birga, u shu sahifadagi barcha ehtimolliklarni belgilaydi.",
   fcTitle: "Natija ehtimolliklari ({n} ta o'tkazish)",
   fcSearch: 'Jamoalarni qidirish',
   fcAllGroups: 'Barcha guruhlar',
@@ -407,6 +409,9 @@ const uz: Dict = {
   aimsNeutral: 'Betaraf',
   aimsGoal: 'GOOOL!',
   aimsKnockout: "Chiqib ketish bosqichi (qo'shimcha vaqt + penaltilar)",
+  aimsRatings: 'Reytinglar',
+  aimsRatingsLatest: 'Joriy',
+  aimsRatingsPre: 'Turnirdan oldin',
 }
 
 export default uz

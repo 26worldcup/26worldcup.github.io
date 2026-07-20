@@ -192,6 +192,8 @@ const sv: Dict = {
   simDateTip: 'Simulera alla matcher från och med detta datum (inklusive det) (din lokala tid).',
   simMatch: 'Match',
   simMatchTip: 'Simulera alla matcher från och med detta matchnummer (inklusive den).',
+  simRatingsTip:
+    'Elo-rating för lagstyrka. Varje landskamp ändrar den, så den hör alltid till ett visst ögonblick. Tillsammans med FIFA-rankningpoäng avgör den alla sannolikheter på den här sidan.',
   fcTitle: 'Utfallssannolikheter ({n} körningar)',
   fcSearch: 'Sök lag',
   fcAllGroups: 'Alla grupper',
@@ -405,6 +407,9 @@ const sv: Dict = {
   aimsNeutral: 'Neutral',
   aimsGoal: 'MÅÅÅL!',
   aimsKnockout: 'Utslagsmatch (förlängning + straffar)',
+  aimsRatings: 'Ratingar',
+  aimsRatingsLatest: 'Aktuella',
+  aimsRatingsPre: 'Före turneringen',
 }
 
 export default sv

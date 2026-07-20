@@ -190,6 +190,8 @@ const ja: Dict = {
     'この日付以降（その日を含む、お使いの端末の現地時間）に行われる試合をすべてシミュレートします。',
   simMatch: '試合番号',
   simMatchTip: 'この試合番号以降（その試合を含む）のすべての試合をシミュレートします。',
+  simRatingsTip:
+    'Eloはチームの実力を表す評価値です。国際Aマッチのたびに変動するため、常にある時点の値です。FIFAランキングポイントと合わせて、このページのすべての確率を決定します。',
   fcTitle: '結果の確率（{n}回試行）',
   fcSearch: 'チームを検索',
   fcAllGroups: '全グループ',
@@ -402,6 +404,9 @@ const ja: Dict = {
   aimsNeutral: '中立',
   aimsGoal: 'ゴーール！',
   aimsKnockout: 'ノックアウト（延長戦 + PK戦）',
+  aimsRatings: 'レーティング',
+  aimsRatingsLatest: '最新',
+  aimsRatingsPre: '大会開幕前',
 }
 
 export default ja

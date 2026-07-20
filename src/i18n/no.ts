@@ -192,6 +192,8 @@ const no: Dict = {
   simDateTip: 'Simuler alle kamper fra og med denne datoen (din lokale tid).',
   simMatch: 'Kamp',
   simMatchTip: 'Simuler alle kamper fra og med dette kampnummeret.',
+  simRatingsTip:
+    'Elo-rating for lagstyrke. Hver landskamp endrer den, så den tilhører alltid ett bestemt tidspunkt. Sammen med FIFA-rangeringspoeng avgjør den alle sannsynlighetene på denne siden.',
   fcTitle: 'Utfallssannsynligheter ({n} kjøringer)',
   fcSearch: 'Søk etter lag',
   fcAllGroups: 'Alle grupper',
@@ -405,6 +407,9 @@ const no: Dict = {
   aimsNeutral: 'Nøytral',
   aimsGoal: 'MÅÅÅL!',
   aimsKnockout: 'Utslagskamp (ekstraomganger + straffer)',
+  aimsRatings: 'Ratinger',
+  aimsRatingsLatest: 'Dagens',
+  aimsRatingsPre: 'Før turneringen',
 }
 
 export default no

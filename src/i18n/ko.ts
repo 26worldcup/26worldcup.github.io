@@ -189,6 +189,8 @@ const ko: Dict = {
   simDateTip: '이 날짜부터(해당 날짜 포함, 현지 시간) 열리는 모든 경기를 시뮬레이션합니다.',
   simMatch: '경기',
   simMatchTip: '이 경기 번호부터(해당 경기 포함) 모든 경기를 시뮬레이션합니다.',
+  simRatingsTip:
+    'Elo는 팀 전력을 나타내는 레이팅입니다. 국가대표 A매치가 있을 때마다 바뀌므로, 항상 특정 시점의 값입니다. FIFA 랭킹 포인트와 함께 이 페이지의 모든 확률을 결정합니다.',
   fcTitle: '결과 확률 (시뮬레이션 {n}회)',
   fcSearch: '팀 검색',
   fcAllGroups: '전체 조',
@@ -400,6 +402,9 @@ const ko: Dict = {
   aimsNeutral: '중립',
   aimsGoal: '고오올!',
   aimsKnockout: '토너먼트 (연장전 + 승부차기)',
+  aimsRatings: '레이팅',
+  aimsRatingsLatest: '최신',
+  aimsRatingsPre: '대회 시작 전',
 }
 
 export default ko

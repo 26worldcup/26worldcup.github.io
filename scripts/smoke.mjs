@@ -116,5 +116,34 @@ for (const [tag, lang, theme, routes] of [
 }
 
 await browser.close()
+
+// data contract: the forecast history must cover every played match
+{
+  const hist = JSON.parse(await fs.readFile('public/data/sim-model-history.json', 'utf8'))
+  const { matches } = JSON.parse(await fs.readFile('public/data/matches.json', 'utf8'))
+  const played = matches.filter(
+    (m) => m.status === 'finished' && m.home?.score != null && m.away?.score != null,
+  ).length
+  const problems = []
+  if (hist.cuts.length !== played + 1) problems.push(`cuts ${hist.cuts.length} != played+1 ${played + 1}`)
+  if (hist.cuts[0].after !== null) problems.push('cuts[0].after must be null')
+  for (const cut of hist.cuts) {
+    if (Object.keys(cut.teams).length !== 48)
+      problems.push(`cut ${cut.n} has ${Object.keys(cut.teams).length} teams`)
+  }
+  // monotonic, not strictly: the last group round kicks off simultaneously by design
+  for (let i = 2; i < hist.cuts.length; i++) {
+    if (Date.parse(hist.cuts[i].after) < Date.parse(hist.cuts[i - 1].after)) {
+      problems.push(`cut ${i} after went backwards`)
+    }
+  }
+  if (problems.length) {
+    console.error(`sim-model-history.json: ${problems.join('; ')}`)
+    failures += problems.length
+  } else {
+    console.log('sim-model-history.json: ok')
+  }
+}
+
 console.log(failures ? `\n${failures} route(s) with problems` : '\nall routes clean')
 process.exit(failures ? 1 : 0)

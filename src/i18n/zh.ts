@@ -188,6 +188,8 @@ const zh: Dict = {
   simDateTip: '从此日期起（含当日，按你的本地时间）模拟之后进行的全部比赛。',
   simMatch: '比赛场次',
   simMatchTip: '从该场次编号起（含该场）模拟之后的全部比赛。',
+  simRatingsTip:
+    'Elo 实力评分。每场国际比赛都会改变它，因此它总是属于某个时间点。它与 FIFA 排名积分共同决定本页所有概率。',
   fcTitle: '结果概率（{n} 次模拟）',
   fcSearch: '搜索球队',
   fcAllGroups: '全部小组',
@@ -397,6 +399,9 @@ const zh: Dict = {
   aimsNeutral: '中立',
   aimsGoal: '球进啦！',
   aimsKnockout: '淘汰赛（加时 + 点球）',
+  aimsRatings: '评分',
+  aimsRatingsLatest: '最新',
+  aimsRatingsPre: '世界杯开幕前',
 }
 
 export default zh

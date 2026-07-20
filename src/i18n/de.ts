@@ -193,6 +193,8 @@ const de: Dict = {
   simDateTip: 'Alle Spiele ab diesem Datum simulieren (einschließlich dieses Tages) (deine Ortszeit).',
   simMatch: 'Spiel',
   simMatchTip: 'Alle Spiele ab dieser Spielnummer simulieren (einschließlich dieser).',
+  simRatingsTip:
+    'Elo-Wertung der Teamstärke. Jedes Länderspiel verändert sie, deshalb gehört sie immer zu einem bestimmten Zeitpunkt. Zusammen mit den FIFA-Weltranglistenpunkten bestimmt sie alle Wahrscheinlichkeiten auf dieser Seite.',
   fcTitle: 'Ergebniswahrscheinlichkeiten ({n} Durchläufe)',
   fcSearch: 'Teams suchen',
   fcAllGroups: 'Alle Gruppen',
@@ -408,6 +410,9 @@ const de: Dict = {
   aimsNeutral: 'Neutral',
   aimsGoal: 'TOOOR!',
   aimsKnockout: 'K.-o.-Spiel (Verlängerung + Elfmeter)',
+  aimsRatings: 'Wertungen',
+  aimsRatingsLatest: 'Aktuell',
+  aimsRatingsPre: 'Vor dem Turnier',
 }
 
 export default de

@@ -192,6 +192,8 @@ const cs: Dict = {
   simDateTip: 'Odsimuluje všechny zápasy od tohoto data dál (včetně něj) (váš místní čas).',
   simMatch: 'Zápas',
   simMatchTip: 'Odsimuluje všechny zápasy od tohoto čísla zápasu dál (včetně něj).',
+  simRatingsTip:
+    'Elo hodnocení síly týmu. Každý reprezentační zápas ho mění, takže vždy patří k určitému okamžiku. Spolu s body žebříčku FIFA určuje všechny pravděpodobnosti na této stránce.',
   fcTitle: 'Pravděpodobnosti výsledků ({n} simulací)',
   fcSearch: 'Hledat týmy',
   fcAllGroups: 'Všechny skupiny',
@@ -408,6 +410,9 @@ const cs: Dict = {
   aimsNeutral: 'Neutrální',
   aimsGoal: 'GÓÓÓL!',
   aimsKnockout: 'Vyřazovací zápas (prodloužení + penalty)',
+  aimsRatings: 'Hodnocení',
+  aimsRatingsLatest: 'Aktuální',
+  aimsRatingsPre: 'Před turnajem',
 }
 
 export default cs

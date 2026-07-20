@@ -49,9 +49,10 @@
     "typecheck": "tsc -b",
     "lint": "biome check .",
     "a11y": "bun scripts/a11y.mjs",
-    "checkall": "bun run typecheck && bun run format && bun run lint",
+    "checkall": "bun run typecheck && bun run format && bun run lint && bun run test",
     "checkall:build": "bun run checkall && bun run build && bun run smoke && bun run a11y",
     "smoke": "bun scripts/smoke.mjs",
+    "test": "bun test",
     "format": "biome format --write .",
     "preview": "vite preview"
   },

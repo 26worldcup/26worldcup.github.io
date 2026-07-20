@@ -192,6 +192,8 @@ const id: Dict = {
   simMatch: 'Laga',
   simMatchTip:
     'Simulasikan setiap pertandingan mulai dari nomor laga ini dan seterusnya (termasuk laga ini).',
+  simRatingsTip:
+    'Nilai Elo untuk kekuatan tim. Setiap laga timnas mengubahnya, sehingga selalu terikat pada momen tertentu. Bersama poin Peringkat FIFA, ini menentukan semua probabilitas di halaman ini.',
   fcTitle: 'Probabilitas hasil ({n} simulasi)',
   fcSearch: 'Cari tim',
   fcAllGroups: 'Semua grup',
@@ -406,6 +408,9 @@ const id: Dict = {
   aimsNeutral: 'Netral',
   aimsGoal: 'GOOOL!',
   aimsKnockout: 'Babak gugur (perpanjangan waktu + penalti)',
+  aimsRatings: 'Peringkat',
+  aimsRatingsLatest: 'Terbaru',
+  aimsRatingsPre: 'Sebelum turnamen',
 }
 
 export default id

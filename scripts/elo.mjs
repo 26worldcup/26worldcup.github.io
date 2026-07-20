@@ -174,6 +174,69 @@ export const CONFED_LISTS = {
   ],
   OFC: ['New Zealand', 'Tahiti', 'Fiji', 'New Caledonia', 'Solomon Islands'],
 }
+
+export const DATASET_NAME = {
+  ALG: 'Algeria',
+  ARG: 'Argentina',
+  AUS: 'Australia',
+  AUT: 'Austria',
+  BEL: 'Belgium',
+  BIH: 'Bosnia and Herzegovina',
+  BRA: 'Brazil',
+  CAN: 'Canada',
+  CIV: 'Ivory Coast',
+  COD: 'DR Congo',
+  COL: 'Colombia',
+  CPV: 'Cape Verde',
+  CRO: 'Croatia',
+  CUW: 'Curaçao',
+  CZE: 'Czech Republic',
+  ECU: 'Ecuador',
+  EGY: 'Egypt',
+  ENG: 'England',
+  ESP: 'Spain',
+  FRA: 'France',
+  GER: 'Germany',
+  GHA: 'Ghana',
+  HAI: 'Haiti',
+  IRN: 'Iran',
+  IRQ: 'Iraq',
+  JOR: 'Jordan',
+  JPN: 'Japan',
+  KOR: 'South Korea',
+  KSA: 'Saudi Arabia',
+  MAR: 'Morocco',
+  MEX: 'Mexico',
+  NED: 'Netherlands',
+  NOR: 'Norway',
+  NZL: 'New Zealand',
+  PAN: 'Panama',
+  PAR: 'Paraguay',
+  POR: 'Portugal',
+  QAT: 'Qatar',
+  RSA: 'South Africa',
+  SCO: 'Scotland',
+  SEN: 'Senegal',
+  SUI: 'Switzerland',
+  SWE: 'Sweden',
+  TUN: 'Tunisia',
+  TUR: 'Turkey',
+  URU: 'Uruguay',
+  USA: 'United States',
+  UZB: 'Uzbekistan',
+}
+
+/** FIFA three-letter code -> confederation, derived from the two tables above */
+export const CONFED_OF = (() => {
+  const out = {}
+  for (const [conf, names] of Object.entries(CONFED_LISTS)) {
+    for (const [code, dsName] of Object.entries(DATASET_NAME)) {
+      if (names.includes(dsName)) out[code] = conf
+    }
+  }
+  return out
+})()
+
 const TEAM_CONFED = new Map()
 for (const [conf, names] of Object.entries(CONFED_LISTS)) {
   for (const n of names) TEAM_CONFED.set(n, conf)

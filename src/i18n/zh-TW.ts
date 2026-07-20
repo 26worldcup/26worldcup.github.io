@@ -188,6 +188,8 @@ const zhTW: Dict = {
   simDateTip: '從此日期起（含當日，依你所在時區）模擬之後進行的所有比賽。',
   simMatch: '比賽場次',
   simMatchTip: '從這場比賽編號起（含此場）模擬之後的所有比賽。',
+  simRatingsTip:
+    'Elo 實力評分。每場國際比賽都會改變它，因此它永遠屬於某個時間點。它與 FIFA 排名積分共同決定本頁所有機率。',
   fcTitle: '各種結果機率（{n}次模擬）',
   fcSearch: '搜尋球隊',
   fcAllGroups: '所有小組',
@@ -397,6 +399,9 @@ const zhTW: Dict = {
   aimsNeutral: '中立',
   aimsGoal: '進球啦！',
   aimsKnockout: '淘汰賽（延長賽 + 點球）',
+  aimsRatings: '評分',
+  aimsRatingsLatest: '最新',
+  aimsRatingsPre: '世界盃開幕前',
 }
 
 export default zhTW

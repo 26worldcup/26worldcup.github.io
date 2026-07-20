@@ -21,7 +21,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { blend, CONFED_LISTS, intify, rawProbs, replay, RESULTS_URL } from './elo.mjs'
+import { blend, CONFED_OF, DATASET_NAME, intify, rawProbs, replay, RESULTS_URL } from './elo.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = path.join(ROOT, 'public', 'data')
@@ -1747,62 +1747,6 @@ async function main() {
       await fs.writeFile(csvPath, csv)
     }
     const { ratings, outcomeCurve, offsets } = replay(csv)
-    const DATASET_NAME = {
-      ALG: 'Algeria',
-      ARG: 'Argentina',
-      AUS: 'Australia',
-      AUT: 'Austria',
-      BEL: 'Belgium',
-      BIH: 'Bosnia and Herzegovina',
-      BRA: 'Brazil',
-      CAN: 'Canada',
-      CIV: 'Ivory Coast',
-      COD: 'DR Congo',
-      COL: 'Colombia',
-      CPV: 'Cape Verde',
-      CRO: 'Croatia',
-      CUW: 'Curaçao',
-      CZE: 'Czech Republic',
-      ECU: 'Ecuador',
-      EGY: 'Egypt',
-      ENG: 'England',
-      ESP: 'Spain',
-      FRA: 'France',
-      GER: 'Germany',
-      GHA: 'Ghana',
-      HAI: 'Haiti',
-      IRN: 'Iran',
-      IRQ: 'Iraq',
-      JOR: 'Jordan',
-      JPN: 'Japan',
-      KOR: 'South Korea',
-      KSA: 'Saudi Arabia',
-      MAR: 'Morocco',
-      MEX: 'Mexico',
-      NED: 'Netherlands',
-      NOR: 'Norway',
-      NZL: 'New Zealand',
-      PAN: 'Panama',
-      PAR: 'Paraguay',
-      POR: 'Portugal',
-      QAT: 'Qatar',
-      RSA: 'South Africa',
-      SCO: 'Scotland',
-      SEN: 'Senegal',
-      SUI: 'Switzerland',
-      SWE: 'Sweden',
-      TUN: 'Tunisia',
-      TUR: 'Turkey',
-      URU: 'Uruguay',
-      USA: 'United States',
-      UZB: 'Uzbekistan',
-    }
-    const CONFED_OF = {}
-    for (const [conf, names] of Object.entries(CONFED_LISTS)) {
-      for (const [code, dsName] of Object.entries(DATASET_NAME)) {
-        if (names.includes(dsName)) CONFED_OF[code] = conf
-      }
-    }
     const HOST_OF = { USA: 'US', CAN: 'CA', MEX: 'MX' }
     const elo = (code) => ratings.get(DATASET_NAME[code]) ?? null
     let missing = 0
@@ -1852,6 +1796,13 @@ async function main() {
       teams: simTeams,
     }
     await writeJson(path.join(OUT, 'sim-model.json'), simModel)
+
+    // per-cut-point snapshots so the forecast can be replayed with the ratings of
+    // the day instead of today's (see docs/superpowers/specs/2026-07-20-*)
+    const { buildHistory } = await import('./simhistory.mjs')
+    const simF = Object.fromEntries(Object.entries(simTeams).map(([c, v]) => [c, v.f]))
+    await writeJson(path.join(OUT, 'sim-model-history.json'), buildHistory(csv, matches, venues, simF))
+    log('sim-model-history: snapshots written')
 
     // 10,000-run Monte-Carlo title odds for the schedule page strip (continue
     // mode: real results kept, so the odds drift with the tournament)

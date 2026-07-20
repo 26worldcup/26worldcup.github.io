@@ -18,6 +18,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { DATASET_NAME } from './elo.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const CSV_PATH = path.join(ROOT, 'scripts/cache/intl-results.csv')
@@ -27,56 +28,7 @@ const OUT_PATH = path.join(ROOT, 'public/data/wc-history.json')
 const UA = 'wc2026-app/1.0 (one-time World Cup history generator; contact: repo owner)'
 
 // FIFA tri-code -> martj42 dataset country name, for finding each team's WC matches
-const DATASET_NAME = {
-  ALG: 'Algeria',
-  ARG: 'Argentina',
-  AUS: 'Australia',
-  AUT: 'Austria',
-  BEL: 'Belgium',
-  BIH: 'Bosnia and Herzegovina',
-  BRA: 'Brazil',
-  CAN: 'Canada',
-  CIV: 'Ivory Coast',
-  COD: 'DR Congo',
-  COL: 'Colombia',
-  CPV: 'Cape Verde',
-  CRO: 'Croatia',
-  CUW: 'Curaçao',
-  CZE: 'Czech Republic',
-  ECU: 'Ecuador',
-  EGY: 'Egypt',
-  ENG: 'England',
-  ESP: 'Spain',
-  FRA: 'France',
-  GER: 'Germany',
-  GHA: 'Ghana',
-  HAI: 'Haiti',
-  IRN: 'Iran',
-  IRQ: 'Iraq',
-  JOR: 'Jordan',
-  JPN: 'Japan',
-  KOR: 'South Korea',
-  KSA: 'Saudi Arabia',
-  MAR: 'Morocco',
-  MEX: 'Mexico',
-  NED: 'Netherlands',
-  NOR: 'Norway',
-  NZL: 'New Zealand',
-  PAN: 'Panama',
-  PAR: 'Paraguay',
-  POR: 'Portugal',
-  QAT: 'Qatar',
-  RSA: 'South Africa',
-  SCO: 'Scotland',
-  SEN: 'Senegal',
-  SUI: 'Switzerland',
-  SWE: 'Sweden',
-  TUN: 'Tunisia',
-  TUR: 'Turkey',
-  URU: 'Uruguay',
-  USA: 'United States',
-  UZB: 'Uzbekistan',
-}
+// (shared with scripts/elo.mjs, which every other pipeline script also draws from)
 
 // teams whose Wikipedia record absorbs a predecessor nation's results (FIFA treats
 // them as the same lineage); match the predecessor's CSV name too

@@ -195,6 +195,8 @@ const pt: Dict = {
   simDateTip: 'Simular todos os jogos disputados a partir desta data (incluindo-a) (hora local).',
   simMatch: 'Jogo',
   simMatchTip: 'Simular todos os jogos a partir deste número de jogo (incluindo-o).',
+  simRatingsTip:
+    'Classificação Elo da força da equipa. Cada jogo de seleções altera-a, por isso corresponde sempre a um momento preciso. Junto com os pontos do ranking FIFA, determina todas as probabilidades desta página.',
   fcTitle: 'Probabilidades de resultado ({n} simulações)',
   fcSearch: 'Procurar seleções',
   fcAllGroups: 'Todos os grupos',
@@ -409,6 +411,9 @@ const pt: Dict = {
   aimsNeutral: 'Neutro',
   aimsGoal: 'GOOOLO!',
   aimsKnockout: 'Eliminatória (prolongamento + grandes penalidades)',
+  aimsRatings: 'Classificações',
+  aimsRatingsLatest: 'Atuais',
+  aimsRatingsPre: 'Antes do torneio',
 }
 
 export default pt

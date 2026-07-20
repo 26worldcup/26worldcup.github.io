@@ -193,7 +193,9 @@ export default function ForecastTable({ rows, teams }: { rows: FcRow[]; teams: R
           </tbody>
         </table>
       </div>
-      <p className="muted small fc-note">{t('fcPctNote')}</p>
+      <p className="muted small fc-note">
+        {t('fcPctNote')} {t('probNote')}
+      </p>
     </div>
   )
 }

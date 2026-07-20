@@ -4,6 +4,7 @@ import { useI18n } from '../i18n'
 import { useAppData, useData } from '../data/DataContext'
 import { intifyKo, pairProbs, simulateMatch } from '../sim/engine'
 import type { SimScore } from '../sim/engine'
+import { dayCutoffMs, modelAt } from '../sim/history'
 import { flagEmoji, hostSide } from '../utils/helpers'
 import Flag from '../components/Flag'
 import Icon from '../components/Icon'
@@ -29,7 +30,7 @@ interface SimEntry {
 export default function MatchSimulator() {
   const { t, pick } = useI18n()
   const { teams, matches, venues } = useAppData()
-  const { simModel, loadSimModel } = useData()
+  const { simModel, loadSimModel, simHistory, loadSimHistory } = useData()
   useEffect(() => {
     loadSimModel()
   })
@@ -42,6 +43,34 @@ export default function MatchSimulator() {
       .filter((c) => teams[c])
       .sort((a, b) => a.localeCompare(b))
   }, [simModel, teams])
+
+  // '' = latest (sim-model.json); otherwise a local calendar day, and the ratings
+  // are those in force at that day's 00:00, i.e. before any of its matches. Same
+  // rule as Forecast's date mode, so both pages mean the same thing by a date.
+  const [ratingDay, setRatingDay] = useState('')
+  useEffect(() => {
+    if (ratingDay) loadSimHistory()
+  }, [ratingDay, loadSimHistory])
+
+  const ratingDays = useMemo(() => {
+    const days = new Set<string>()
+    for (const m of matches) {
+      const d = new Date(m.date)
+      days.add(
+        `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`,
+      )
+    }
+    return [...days].sort()
+  }, [matches])
+
+  // null while the history file loads, so the Simulate button disables and the live
+  // preview hides, rather than quietly showing today's ratings under a historical
+  // label. The team pickers stay interactive; they read from simModel, not this.
+  const activeModel = useMemo(() => {
+    if (!ratingDay) return simModel
+    if (!simHistory) return null
+    return modelAt(simHistory, dayCutoffMs(ratingDay))
+  }, [ratingDay, simHistory, simModel])
 
   const [homeCode, setHomeCode] = useState('')
   const [awayCode, setAwayCode] = useState('')
@@ -96,9 +125,9 @@ export default function MatchSimulator() {
   const homeAdvantage: 'home' | 'away' | undefined =
     homeSide === 'a' ? 'home' : homeSide === 'b' ? 'away' : undefined
   const livePreview = useMemo(() => {
-    if (!simModel || !homeCode || !awayCode || homeCode === awayCode) return null
-    return pairProbs(simModel, homeCode, awayCode, undefined, homeAdvantage)
-  }, [simModel, homeCode, awayCode, homeAdvantage])
+    if (!activeModel || !homeCode || !awayCode || homeCode === awayCode) return null
+    return pairProbs(activeModel, homeCode, awayCode, undefined, homeAdvantage)
+  }, [activeModel, homeCode, awayCode, homeAdvantage])
 
   // every real World Cup fixture between the two picked teams, either order, regardless of
   // the home-advantage / knockout toggles (they only affect the hypothetical simulation)
@@ -113,12 +142,20 @@ export default function MatchSimulator() {
       .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
   }, [matches, homeCode, awayCode])
 
-  const canSimulate = !!simModel && !!homeCode && !!awayCode && homeCode !== awayCode
+  const canSimulate = !!activeModel && !!homeCode && !!awayCode && homeCode !== awayCode
 
   const simulate = () => {
-    if (!canSimulate || !simModel) return
-    const probs = pairProbs(simModel, homeCode, awayCode, undefined, homeAdvantage)
-    const score = simulateMatch(simModel, homeCode, awayCode, undefined, knockout, Math.random, homeAdvantage)
+    if (!canSimulate || !activeModel) return
+    const probs = pairProbs(activeModel, homeCode, awayCode, undefined, homeAdvantage)
+    const score = simulateMatch(
+      activeModel,
+      homeCode,
+      awayCode,
+      undefined,
+      knockout,
+      Math.random,
+      homeAdvantage,
+    )
     const entry: SimEntry = {
       id: idRef.current++,
       homeCode,
@@ -260,17 +297,38 @@ export default function MatchSimulator() {
           </label>
         </div>
 
-        <label className="ams-ko">
-          <input
-            type="checkbox"
-            checked={knockout}
-            onChange={(e) => {
-              setKnockout(e.target.checked)
-              setResult(null)
-            }}
-          />
-          {t('aimsKnockout')}
-        </label>
+        <div className="ams-controls">
+          <label className="ams-ko">
+            <input
+              type="checkbox"
+              checked={knockout}
+              onChange={(e) => {
+                setKnockout(e.target.checked)
+                setResult(null)
+              }}
+            />
+            {t('aimsKnockout')}
+          </label>
+
+          <label className="ams-ratings">
+            {t('aimsRatings')}
+            <select
+              className="input"
+              value={ratingDay}
+              onChange={(e) => {
+                setRatingDay(e.target.value)
+                setResult(null)
+              }}
+            >
+              <option value="">{t('aimsRatingsLatest')}</option>
+              {ratingDays.map((d, i) => (
+                <option key={d} value={d}>
+                  {i === 0 ? t('aimsRatingsPre') : d}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
 
         {livePreview && !result && (
           <div className="ams-preview">

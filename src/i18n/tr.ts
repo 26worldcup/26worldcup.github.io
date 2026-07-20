@@ -190,6 +190,8 @@ const tr: Dict = {
   simDateTip: 'Bu tarihten itibaren (bu tarih dahil) oynanan tüm maçlar simüle edilir (yerel saatinizle).',
   simMatch: 'Maç',
   simMatchTip: 'Bu maç numarasından itibaren (bu maç dahil) tüm maçlar simüle edilir.',
+  simRatingsTip:
+    'Elo, takımın gücünü gösteren bir puandır. Her milli maç bu puanı değiştirir, bu yüzden her zaman belirli bir ana aittir. FIFA sıralama puanlarıyla birlikte bu sayfadaki tüm olasılıkları belirler.',
   fcTitle: 'Sonuç olasılıkları ({n} simülasyon)',
   fcSearch: 'Takım ara',
   fcAllGroups: 'Tüm gruplar',
@@ -403,6 +405,9 @@ const tr: Dict = {
   aimsNeutral: 'Nötr',
   aimsGoal: 'GOOOL!',
   aimsKnockout: 'Eleme maçı (uzatma + penaltı)',
+  aimsRatings: 'Puanlar',
+  aimsRatingsLatest: 'Güncel',
+  aimsRatingsPre: 'Turnuva öncesi',
 }
 
 export default tr

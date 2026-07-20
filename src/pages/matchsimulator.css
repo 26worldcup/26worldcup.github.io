@@ -70,6 +70,29 @@
 .ams-ko input {
   accent-color: var(--accent);
 }
+
+/* knockout toggle and the ratings picker share one row while they fit, with the
+   picker at the trailing edge. Once they don't, each wraps onto its own line and
+   space-between leaves it at the leading edge. */
+.ams-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
+.ams-ratings {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+}
+
+.ams-ratings select {
+  min-width: 0;
+  width: auto;
+}
 .ams-kotable {
   width: 100%;
   border-collapse: collapse;
@@ -344,5 +367,12 @@
   }
   .ams-history-row {
     grid-template-columns: 16px 1fr auto 1fr 16px;
+  }
+  /* stacked: let the select use the full width rather than hug its longest option */
+  .ams-ratings {
+    width: 100%;
+  }
+  .ams-ratings select {
+    flex: 1;
   }
 }

@@ -193,6 +193,8 @@ const hr: Dict = {
   simDateTip: 'Simuliraj sve utakmice od ovog datuma nadalje (uključujući njega) (vaše lokalno vrijeme).',
   simMatch: 'Utakmica',
   simMatchTip: 'Simuliraj sve utakmice od ovog rednog broja nadalje (uključujući nju).',
+  simRatingsTip:
+    'Elo ocjena snage momčadi. Svaka reprezentativna utakmica ju mijenja, pa uvijek pripada određenom trenutku. Zajedno s bodovima FIFA-ine ljestvice, određuje sve vjerojatnosti na ovoj stranici.',
   fcTitle: 'Vjerojatnosti ishoda ({n} simulacija)',
   fcSearch: 'Pretraži reprezentacije',
   fcAllGroups: 'Sve skupine',
@@ -408,6 +410,9 @@ const hr: Dict = {
   aimsNeutral: 'Neutralno',
   aimsGoal: 'GOOOL!',
   aimsKnockout: 'Nokaut-faza (produžeci + jedanaesterci)',
+  aimsRatings: 'Ocjene',
+  aimsRatingsLatest: 'Trenutne',
+  aimsRatingsPre: 'Prije turnira',
 }
 
 export default hr

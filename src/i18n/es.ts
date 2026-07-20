@@ -194,6 +194,8 @@ const es: Dict = {
   simDateTip: 'Simula todos los partidos jugados a partir de esta fecha (incluida) (tu hora local).',
   simMatch: 'Partido',
   simMatchTip: 'Simula todos los partidos a partir de este número de partido (incluido).',
+  simRatingsTip:
+    'El Elo mide la fuerza del equipo. Cada partido de selecciones lo modifica, así que siempre corresponde a un momento concreto. Junto con los puntos del ranking FIFA, determina todas las probabilidades de esta página.',
   fcTitle: 'Probabilidades de resultado ({n} simulaciones)',
   fcSearch: 'Buscar selecciones',
   fcAllGroups: 'Todos los grupos',
@@ -408,6 +410,9 @@ const es: Dict = {
     'Usa el mismo modelo de calificación Elo de la página de Pronóstico del torneo. Solo con fines de entretenimiento. No es una predicción oficial.',
   aimsGoal: '¡GOOOL!',
   aimsKnockout: 'Eliminatoria (prórroga + penaltis)',
+  aimsRatings: 'Valoraciones',
+  aimsRatingsLatest: 'Actuales',
+  aimsRatingsPre: 'Antes del torneo',
 }
 
 export default es

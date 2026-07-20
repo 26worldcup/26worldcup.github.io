@@ -196,6 +196,8 @@ const en: Dict = {
   simDateTip: 'Simulate every match played from this date onward (including it) (your local time).',
   simMatch: 'Match',
   simMatchTip: 'Simulate every match from this match number onward (including it).',
+  simRatingsTip:
+    'Elo team strength. Every international match moves it, so it always belongs to a moment in time. With FIFA ranking points, it drives every probability here.',
   // ---- forecast: outcome-probability table ----
   fcTitle: 'Outcome probabilities ({n} runs)',
   fcSearch: 'Search teams',
@@ -412,6 +414,9 @@ const en: Dict = {
     'Powered by the same Elo rating model used in the tournament Forecast page. For entertainment only. Not an official prediction.',
   aimsGoal: 'GOOOAL!',
   aimsKnockout: 'Knockout (extra time + penalties)',
+  aimsRatings: 'Ratings',
+  aimsRatingsLatest: 'Latest',
+  aimsRatingsPre: 'Before the tournament',
 }
 
 export default en
